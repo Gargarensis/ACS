@@ -910,7 +910,7 @@ Partial Class QuestRewards
         '
         Me.numFactionValue5.Location = New System.Drawing.Point(342, 232)
         Me.numFactionValue5.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.numFactionValue5.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numFactionValue5.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.numFactionValue5.Name = "numFactionValue5"
         Me.numFactionValue5.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue5.TabIndex = 47
@@ -921,7 +921,7 @@ Partial Class QuestRewards
         '
         Me.numFactionValue4.Location = New System.Drawing.Point(342, 186)
         Me.numFactionValue4.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.numFactionValue4.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numFactionValue4.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.numFactionValue4.Name = "numFactionValue4"
         Me.numFactionValue4.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue4.TabIndex = 46
@@ -932,7 +932,7 @@ Partial Class QuestRewards
         '
         Me.numFactionValue3.Location = New System.Drawing.Point(342, 136)
         Me.numFactionValue3.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.numFactionValue3.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numFactionValue3.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.numFactionValue3.Name = "numFactionValue3"
         Me.numFactionValue3.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue3.TabIndex = 45
@@ -943,7 +943,7 @@ Partial Class QuestRewards
         '
         Me.numFactionValue2.Location = New System.Drawing.Point(342, 85)
         Me.numFactionValue2.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.numFactionValue2.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numFactionValue2.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.numFactionValue2.Name = "numFactionValue2"
         Me.numFactionValue2.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue2.TabIndex = 48
@@ -953,8 +953,8 @@ Partial Class QuestRewards
         'numFactionValue1
         '
         Me.numFactionValue1.Location = New System.Drawing.Point(342, 36)
-        Me.numFactionValue1.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
-        Me.numFactionValue1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.numFactionValue1.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
+        Me.numFactionValue1.Minimum = New Decimal(New Integer() {100000, 0, 0, -2147483648})
         Me.numFactionValue1.Name = "numFactionValue1"
         Me.numFactionValue1.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue1.TabIndex = 49

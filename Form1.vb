@@ -42,7 +42,7 @@ Public Class Form1
         FONT_COLLECTION.AddFontFile(Application.StartupPath + "\fonts\FRIZ.TTF")
 
         FONT_MORPHEUS = New Font(FONT_COLLECTION.Families(0), 14, FontStyle.Regular)
-        FONT_FRIZ = New Font(FONT_COLLECTION.Families(1), 6, FontStyle.Regular)
+        FONT_FRIZ = New Font(FONT_COLLECTION.Families(1), 8, FontStyle.Regular)
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

@@ -124,7 +124,7 @@ Public Class QuestRewards
         End Select
 
         For i As Integer = 0 To num.Count - 1
-            If Not (d.ContainsKey(num(i).Value)) Then
+            If Not (d.ContainsKey(num(i).Value)) And Not num(i).Value = 0 Then
                 d.Add(num(i).Value, numCount(i).Value)
             End If
         Next
@@ -151,7 +151,6 @@ Public Class QuestRewards
             DirectCast(Owner, QuestForm).receiveItemChoiceRewards(itemChoiceReward)
             DirectCast(Owner, QuestForm).receiveFactionRewards(factionReward)
             DirectCast(Owner, QuestForm).receiveOtherRewards(otherReward)
-            DirectCast(Owner, QuestForm).drawQuestRewards()
             Me.Close()
         End If
     End Sub

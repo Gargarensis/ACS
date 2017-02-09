@@ -79,6 +79,11 @@ Partial Class QuestForm
         Me.lblObjective4 = New System.Windows.Forms.Label
         Me.txtObj4 = New System.Windows.Forms.TextBox
         Me.boxRewards = New System.Windows.Forms.GroupBox
+        Me.lblFac5 = New System.Windows.Forms.Label
+        Me.lblFac4 = New System.Windows.Forms.Label
+        Me.lblFac3 = New System.Windows.Forms.Label
+        Me.lblFac2 = New System.Windows.Forms.Label
+        Me.lblFac1 = New System.Windows.Forms.Label
         Me.btnRewards = New System.Windows.Forms.Button
         Me.questDisplay = New System.Windows.Forms.PictureBox
         Me.boxBasic.SuspendLayout()
@@ -471,7 +476,7 @@ Partial Class QuestForm
         Me.boxRequirements.Controls.Add(Me.btnCreatuerRequired)
         Me.boxRequirements.Controls.Add(Me.lblItemrequiredList)
         Me.boxRequirements.Controls.Add(Me.btnRequireItems)
-        Me.boxRequirements.Location = New System.Drawing.Point(298, 340)
+        Me.boxRequirements.Location = New System.Drawing.Point(298, 380)
         Me.boxRequirements.Name = "boxRequirements"
         Me.boxRequirements.Size = New System.Drawing.Size(270, 157)
         Me.boxRequirements.TabIndex = 25
@@ -547,16 +552,16 @@ Partial Class QuestForm
         Me.boxQuestGiver.Controls.Add(Me.listTakers)
         Me.boxQuestGiver.Controls.Add(Me.btnAddGiver)
         Me.boxQuestGiver.Controls.Add(Me.listGiver)
-        Me.boxQuestGiver.Location = New System.Drawing.Point(298, 503)
+        Me.boxQuestGiver.Location = New System.Drawing.Point(298, 548)
         Me.boxQuestGiver.Name = "boxQuestGiver"
-        Me.boxQuestGiver.Size = New System.Drawing.Size(270, 172)
+        Me.boxQuestGiver.Size = New System.Drawing.Size(270, 127)
         Me.boxQuestGiver.TabIndex = 27
         Me.boxQuestGiver.TabStop = False
         Me.boxQuestGiver.Text = "Quest Giver and Taker"
         '
         'btnAddTaker
         '
-        Me.btnAddTaker.Location = New System.Drawing.Point(144, 26)
+        Me.btnAddTaker.Location = New System.Drawing.Point(148, 21)
         Me.btnAddTaker.Name = "btnAddTaker"
         Me.btnAddTaker.Size = New System.Drawing.Size(89, 35)
         Me.btnAddTaker.TabIndex = 3
@@ -569,12 +574,12 @@ Partial Class QuestForm
         Me.listTakers.ItemHeight = 16
         Me.listTakers.Location = New System.Drawing.Point(133, 62)
         Me.listTakers.Name = "listTakers"
-        Me.listTakers.Size = New System.Drawing.Size(117, 100)
+        Me.listTakers.Size = New System.Drawing.Size(117, 52)
         Me.listTakers.TabIndex = 2
         '
         'btnAddGiver
         '
-        Me.btnAddGiver.Location = New System.Drawing.Point(17, 26)
+        Me.btnAddGiver.Location = New System.Drawing.Point(17, 21)
         Me.btnAddGiver.Name = "btnAddGiver"
         Me.btnAddGiver.Size = New System.Drawing.Size(89, 35)
         Me.btnAddGiver.TabIndex = 1
@@ -587,7 +592,7 @@ Partial Class QuestForm
         Me.listGiver.ItemHeight = 16
         Me.listGiver.Location = New System.Drawing.Point(6, 62)
         Me.listGiver.Name = "listGiver"
-        Me.listGiver.Size = New System.Drawing.Size(109, 100)
+        Me.listGiver.Size = New System.Drawing.Size(109, 52)
         Me.listGiver.TabIndex = 0
         '
         'lblObjective1
@@ -656,13 +661,58 @@ Partial Class QuestForm
         '
         'boxRewards
         '
+        Me.boxRewards.Controls.Add(Me.lblFac5)
+        Me.boxRewards.Controls.Add(Me.lblFac4)
+        Me.boxRewards.Controls.Add(Me.lblFac3)
+        Me.boxRewards.Controls.Add(Me.lblFac2)
+        Me.boxRewards.Controls.Add(Me.lblFac1)
         Me.boxRewards.Controls.Add(Me.btnRewards)
         Me.boxRewards.Location = New System.Drawing.Point(298, 150)
         Me.boxRewards.Name = "boxRewards"
-        Me.boxRewards.Size = New System.Drawing.Size(198, 75)
+        Me.boxRewards.Size = New System.Drawing.Size(198, 194)
         Me.boxRewards.TabIndex = 33
         Me.boxRewards.TabStop = False
         Me.boxRewards.Text = "Rewards"
+        '
+        'lblFac5
+        '
+        Me.lblFac5.AutoSize = True
+        Me.lblFac5.Location = New System.Drawing.Point(14, 161)
+        Me.lblFac5.Name = "lblFac5"
+        Me.lblFac5.Size = New System.Drawing.Size(0, 17)
+        Me.lblFac5.TabIndex = 35
+        '
+        'lblFac4
+        '
+        Me.lblFac4.AutoSize = True
+        Me.lblFac4.Location = New System.Drawing.Point(14, 138)
+        Me.lblFac4.Name = "lblFac4"
+        Me.lblFac4.Size = New System.Drawing.Size(0, 17)
+        Me.lblFac4.TabIndex = 34
+        '
+        'lblFac3
+        '
+        Me.lblFac3.AutoSize = True
+        Me.lblFac3.Location = New System.Drawing.Point(14, 115)
+        Me.lblFac3.Name = "lblFac3"
+        Me.lblFac3.Size = New System.Drawing.Size(0, 17)
+        Me.lblFac3.TabIndex = 3
+        '
+        'lblFac2
+        '
+        Me.lblFac2.AutoSize = True
+        Me.lblFac2.Location = New System.Drawing.Point(14, 90)
+        Me.lblFac2.Name = "lblFac2"
+        Me.lblFac2.Size = New System.Drawing.Size(0, 17)
+        Me.lblFac2.TabIndex = 2
+        '
+        'lblFac1
+        '
+        Me.lblFac1.AutoSize = True
+        Me.lblFac1.Location = New System.Drawing.Point(14, 67)
+        Me.lblFac1.Name = "lblFac1"
+        Me.lblFac1.Size = New System.Drawing.Size(0, 17)
+        Me.lblFac1.TabIndex = 1
         '
         'btnRewards
         '
@@ -731,6 +781,7 @@ Partial Class QuestForm
         Me.boxRequirements.PerformLayout()
         Me.boxQuestGiver.ResumeLayout(False)
         Me.boxRewards.ResumeLayout(False)
+        Me.boxRewards.PerformLayout()
         CType(Me.questDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -795,4 +846,9 @@ Partial Class QuestForm
     Friend WithEvents boxRewards As System.Windows.Forms.GroupBox
     Friend WithEvents btnRewards As System.Windows.Forms.Button
     Friend WithEvents lblProvidedName As System.Windows.Forms.Label
+    Friend WithEvents lblFac5 As System.Windows.Forms.Label
+    Friend WithEvents lblFac4 As System.Windows.Forms.Label
+    Friend WithEvents lblFac3 As System.Windows.Forms.Label
+    Friend WithEvents lblFac2 As System.Windows.Forms.Label
+    Friend WithEvents lblFac1 As System.Windows.Forms.Label
 End Class

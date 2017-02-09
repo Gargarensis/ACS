@@ -215,10 +215,15 @@
     <None Include="Resources\Pvpcurrency-honor-horde[1].png" />
     <None Include="Resources\Pvpcurrency-honor-alliance[1].png" />
     <None Include="Resources\Pvecurrency-valor[1].png" />
+    <None Include="Resources\money-gold[2].gif" />
+    <None Include="Resources\money-silver[1].gif" />
+    <None Include="Resources\money-copper[1].gif" />
     <Content Include="tables\creature_template1.txt" />
     <Content Include="tables\creature_template_entries.txt" />
+    <Content Include="tables\displayinterface.txt" />
     <Content Include="tables\extended_cost.txt" />
     <Content Include="tables\factions.txt" />
+    <Content Include="tables\itemdisplay.txt" />
     <Content Include="tables\items.txt" />
     <Content Include="tables\questxp.txt" />
   </ItemGroup>

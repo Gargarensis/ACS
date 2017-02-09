@@ -68,6 +68,27 @@ Public Class Quest
     Public Function getQuestDetail() As String()
         Return questDetails
     End Function
+    Public Function getMoneyReward() As Int64
+        Return otherRewards(0)
+    End Function
+    Public Function getStringRewards() As String
+        Dim result As String
+        result = "You will receive: " + vbCrLf
+        If getItemRewards().Count > 0 Then
+            result = result + "You will get the following items: " + vbCrLf
+            For Each k As Int64 In getItemRewards().Keys
+                result = result + "    " + Tables.findItemNameById(k) + vbCrLf
+            Next
+        End If
+        If getItemChoiceRewards().Count > 0 Then
+            result = result + "You will choose between one of the following items: " + vbCrLf
+            For Each k As Int64 In getItemChoiceRewards().Keys
+                result = result + "    " + Tables.findItemNameById(k) + vbCrLf
+            Next
+        End If
+
+        Return result
+    End Function
 
 
     'setter

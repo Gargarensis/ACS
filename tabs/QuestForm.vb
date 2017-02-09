@@ -37,16 +37,22 @@ Public Class QuestForm
         Me.questDisplay.Image = CType(New Bitmap(questDisplay.Width, questDisplay.Height), Image)
         Using bmp As New Bitmap(questDisplay.Width, questDisplay.Height)
             Using g As Graphics = Graphics.FromImage(bmp)
+
+                g.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
+                g.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
                 g.DrawLine(Pens.Black, 0, 81, questDisplay.Width, 81)
                 g.DrawLine(Pens.Black, 0, 101, questDisplay.Width, 101)
                 g.DrawLine(Pens.Black, 0, 151, questDisplay.Width, 151)
                 g.DrawLine(Pens.Black, 0, 281, questDisplay.Width, 281)
 
                 g.DrawString(currentQuest.getQuestDetail(0), FONT_MORPHEUS, Brushes.Black, 20, 80)
-                g.DrawString(currentQuest.getQuestDetail(2), FONT_FRIZ, Brushes.Black, 20, 100)
+                g.DrawString(currentQuest.getQuestDetail(2), FONT_MONOSPACE, Brushes.Black, 25, 100)
                 g.DrawString("Description", FONT_MORPHEUS, Brushes.Black, 20, 150)
-                g.DrawString(currentQuest.getQuestDetail(1), FONT_FRIZ, Brushes.Black, 20, 170)
+                g.DrawString(currentQuest.getQuestDetail(1), FONT_MONOSPACE, Brushes.Black, 25, 170)
                 g.DrawString("Rewards", FONT_MORPHEUS, Brushes.Black, 20, 280)
+                drawQuestRewards(g)
 
                 questDisplay.Image = CType(bmp.Clone, Image)
             End Using
@@ -158,8 +164,37 @@ Public Class QuestForm
     End Sub
     Public Sub receiveFactionRewards(ByVal factionRewards As Dictionary(Of Int64, Int32))
         currentQuest.setFactionRewards(factionRewards)
+
+        Dim l As New List(Of Int64)(factionRewards.Keys)
+
+        For Each c As Control In Me.boxRewards.Controls
+            If TypeOf c Is Label Then
+                Dim i As Int16 = Convert.ToInt16(c.Name.ToCharArray()(c.Name.Length - 1))
+                i = i - 49 ' 48 to get num, -1 for index
+                If (i >= factionRewards.Keys.Count Or i < 0) Then
+                    Continue For
+                End If
+
+                c.Text = factionRewards(l(i)) & " with " & Tables.getFactionNameById(l(i))
+
+                If factionRewards(l(i)) > 0 Then
+                    c.ForeColor = Color.Green
+                    c.Text = "+" + c.Text
+                Else
+                    c.ForeColor = Color.Red
+                    c.Text = "-" + c.Text
+                End If
+            End If
+        Next
     End Sub
-    Public Sub drawQuestRewards()
-        ' TODO
+    Public Sub drawQuestRewards(ByVal g As Graphics)
+        ' getting items icons
+        g.DrawString(currentQuest.getStringRewards(), FONT_MONOSPACE, Brushes.Black, 25, 302)
+
+        Dim url As String = Tables.getItemIconURL(Tables.getItemDisplayNameById(17))
+        Dim tClient As Net.WebClient = New Net.WebClient
+        Dim tImage As Bitmap = Bitmap.FromStream(New IO.MemoryStream(tClient.DownloadData(url)))
+
+
     End Sub
 End Class
