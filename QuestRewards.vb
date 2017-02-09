@@ -151,6 +151,7 @@ Public Class QuestRewards
             DirectCast(Owner, QuestForm).receiveItemChoiceRewards(itemChoiceReward)
             DirectCast(Owner, QuestForm).receiveFactionRewards(factionReward)
             DirectCast(Owner, QuestForm).receiveOtherRewards(otherReward)
+            DirectCast(Owner, QuestForm).drawQuest()
             Me.Close()
         End If
     End Sub

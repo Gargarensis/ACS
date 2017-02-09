@@ -70,14 +70,6 @@ Partial Class QuestForm
         Me.listTakers = New System.Windows.Forms.ListBox
         Me.btnAddGiver = New System.Windows.Forms.Button
         Me.listGiver = New System.Windows.Forms.ListBox
-        Me.lblObjective1 = New System.Windows.Forms.Label
-        Me.txtObj1 = New System.Windows.Forms.TextBox
-        Me.lblObjective3 = New System.Windows.Forms.Label
-        Me.txtObj3 = New System.Windows.Forms.TextBox
-        Me.lblObjective2 = New System.Windows.Forms.Label
-        Me.txtObj2 = New System.Windows.Forms.TextBox
-        Me.lblObjective4 = New System.Windows.Forms.Label
-        Me.txtObj4 = New System.Windows.Forms.TextBox
         Me.boxRewards = New System.Windows.Forms.GroupBox
         Me.lblFac5 = New System.Windows.Forms.Label
         Me.lblFac4 = New System.Windows.Forms.Label
@@ -478,7 +470,7 @@ Partial Class QuestForm
         Me.boxRequirements.Controls.Add(Me.btnRequireItems)
         Me.boxRequirements.Location = New System.Drawing.Point(298, 380)
         Me.boxRequirements.Name = "boxRequirements"
-        Me.boxRequirements.Size = New System.Drawing.Size(270, 157)
+        Me.boxRequirements.Size = New System.Drawing.Size(198, 157)
         Me.boxRequirements.TabIndex = 25
         Me.boxRequirements.TabStop = False
         Me.boxRequirements.Text = "Requirements to complete"
@@ -554,7 +546,7 @@ Partial Class QuestForm
         Me.boxQuestGiver.Controls.Add(Me.listGiver)
         Me.boxQuestGiver.Location = New System.Drawing.Point(298, 548)
         Me.boxQuestGiver.Name = "boxQuestGiver"
-        Me.boxQuestGiver.Size = New System.Drawing.Size(270, 127)
+        Me.boxQuestGiver.Size = New System.Drawing.Size(198, 127)
         Me.boxQuestGiver.TabIndex = 27
         Me.boxQuestGiver.TabStop = False
         Me.boxQuestGiver.Text = "Quest Giver and Taker"
@@ -594,70 +586,6 @@ Partial Class QuestForm
         Me.listGiver.Name = "listGiver"
         Me.listGiver.Size = New System.Drawing.Size(109, 52)
         Me.listGiver.TabIndex = 0
-        '
-        'lblObjective1
-        '
-        Me.lblObjective1.AutoSize = True
-        Me.lblObjective1.Location = New System.Drawing.Point(574, 572)
-        Me.lblObjective1.Name = "lblObjective1"
-        Me.lblObjective1.Size = New System.Drawing.Size(139, 17)
-        Me.lblObjective1.TabIndex = 31
-        Me.lblObjective1.Text = "Replace Objective 1:"
-        '
-        'txtObj1
-        '
-        Me.txtObj1.Location = New System.Drawing.Point(719, 569)
-        Me.txtObj1.Name = "txtObj1"
-        Me.txtObj1.Size = New System.Drawing.Size(229, 22)
-        Me.txtObj1.TabIndex = 32
-        '
-        'lblObjective3
-        '
-        Me.lblObjective3.AutoSize = True
-        Me.lblObjective3.Location = New System.Drawing.Point(574, 628)
-        Me.lblObjective3.Name = "lblObjective3"
-        Me.lblObjective3.Size = New System.Drawing.Size(139, 17)
-        Me.lblObjective3.TabIndex = 31
-        Me.lblObjective3.Text = "Replace Objective 3:"
-        '
-        'txtObj3
-        '
-        Me.txtObj3.Location = New System.Drawing.Point(719, 625)
-        Me.txtObj3.Name = "txtObj3"
-        Me.txtObj3.Size = New System.Drawing.Size(229, 22)
-        Me.txtObj3.TabIndex = 32
-        '
-        'lblObjective2
-        '
-        Me.lblObjective2.AutoSize = True
-        Me.lblObjective2.Location = New System.Drawing.Point(574, 600)
-        Me.lblObjective2.Name = "lblObjective2"
-        Me.lblObjective2.Size = New System.Drawing.Size(139, 17)
-        Me.lblObjective2.TabIndex = 31
-        Me.lblObjective2.Text = "Replace Objective 2:"
-        '
-        'txtObj2
-        '
-        Me.txtObj2.Location = New System.Drawing.Point(719, 597)
-        Me.txtObj2.Name = "txtObj2"
-        Me.txtObj2.Size = New System.Drawing.Size(229, 22)
-        Me.txtObj2.TabIndex = 32
-        '
-        'lblObjective4
-        '
-        Me.lblObjective4.AutoSize = True
-        Me.lblObjective4.Location = New System.Drawing.Point(574, 656)
-        Me.lblObjective4.Name = "lblObjective4"
-        Me.lblObjective4.Size = New System.Drawing.Size(139, 17)
-        Me.lblObjective4.TabIndex = 31
-        Me.lblObjective4.Text = "Replace Objective 4:"
-        '
-        'txtObj4
-        '
-        Me.txtObj4.Location = New System.Drawing.Point(719, 653)
-        Me.txtObj4.Name = "txtObj4"
-        Me.txtObj4.Size = New System.Drawing.Size(229, 22)
-        Me.txtObj4.TabIndex = 32
         '
         'boxRewards
         '
@@ -727,9 +655,9 @@ Partial Class QuestForm
         '
         Me.questDisplay.BackgroundImage = Global.ACS.My.Resources.Resources.Empty_Quest_Log
         Me.questDisplay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.questDisplay.Location = New System.Drawing.Point(574, 44)
+        Me.questDisplay.Location = New System.Drawing.Point(502, 12)
         Me.questDisplay.Name = "questDisplay"
-        Me.questDisplay.Size = New System.Drawing.Size(374, 493)
+        Me.questDisplay.Size = New System.Drawing.Size(446, 663)
         Me.questDisplay.TabIndex = 28
         Me.questDisplay.TabStop = False
         '
@@ -739,14 +667,6 @@ Partial Class QuestForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(960, 700)
         Me.Controls.Add(Me.boxRewards)
-        Me.Controls.Add(Me.txtObj2)
-        Me.Controls.Add(Me.txtObj4)
-        Me.Controls.Add(Me.txtObj3)
-        Me.Controls.Add(Me.lblObjective2)
-        Me.Controls.Add(Me.lblObjective4)
-        Me.Controls.Add(Me.txtObj1)
-        Me.Controls.Add(Me.lblObjective3)
-        Me.Controls.Add(Me.lblObjective1)
         Me.Controls.Add(Me.questDisplay)
         Me.Controls.Add(Me.boxQuestGiver)
         Me.Controls.Add(Me.boxRequirements)
@@ -829,14 +749,6 @@ Partial Class QuestForm
     Friend WithEvents btnAddGiver As System.Windows.Forms.Button
     Friend WithEvents listGiver As System.Windows.Forms.ListBox
     Friend WithEvents questDisplay As System.Windows.Forms.PictureBox
-    Friend WithEvents lblObjective1 As System.Windows.Forms.Label
-    Friend WithEvents txtObj1 As System.Windows.Forms.TextBox
-    Friend WithEvents lblObjective3 As System.Windows.Forms.Label
-    Friend WithEvents txtObj3 As System.Windows.Forms.TextBox
-    Friend WithEvents lblObjective2 As System.Windows.Forms.Label
-    Friend WithEvents txtObj2 As System.Windows.Forms.TextBox
-    Friend WithEvents lblObjective4 As System.Windows.Forms.Label
-    Friend WithEvents txtObj4 As System.Windows.Forms.TextBox
     Friend WithEvents lblExperienceValue As System.Windows.Forms.Label
     Friend WithEvents numExperience As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblExperience As System.Windows.Forms.Label

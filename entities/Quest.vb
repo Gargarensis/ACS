@@ -74,17 +74,56 @@ Public Class Quest
     Public Function getStringRewards() As String
         Dim result As String
         result = "You will receive: " + vbCrLf
+        Dim i As Integer = 0
         If getItemRewards().Count > 0 Then
             result = result + "You will get the following items: " + vbCrLf
             For Each k As Int64 In getItemRewards().Keys
-                result = result + "    " + Tables.findItemNameById(k) + vbCrLf
+                result = result + "    " + Tables.findItemNameById(k)
+                If i = 0 Then
+                    result = result + vbTab + vbTab
+                    i = i + 1
+                Else
+                    result = result + vbCrLf + vbCrLf
+                    i = i - 1
+                End If
             Next
+        End If
+
+        i = 0
+        If Not result.EndsWith(vbCrLf) Then
+            result = result + vbCrLf
+        Else
+            result.Remove(result.Length - 1, 1)
         End If
         If getItemChoiceRewards().Count > 0 Then
             result = result + "You will choose between one of the following items: " + vbCrLf
             For Each k As Int64 In getItemChoiceRewards().Keys
-                result = result + "    " + Tables.findItemNameById(k) + vbCrLf
+                result = result + "    " + Tables.findItemNameById(k)
+                If i = 0 Then
+                    result = result + vbTab + vbTab
+                    i = i + 1
+                Else
+                    result = result + vbCrLf + vbCrLf
+                    i = i - 1
+                End If
             Next
+        End If
+
+        If Not result.EndsWith(vbCrLf) Then
+            result = result + vbCrLf
+        Else
+            result.Remove(result.Length - 1, 1)
+        End If
+
+        If getOtherRewards()(1) > 0 Or getOtherRewards()(2) > 0 Then
+            result = result + "You will also receive: "
+            If getOtherRewards()(1) > 0 Then
+                result = result & getOtherRewards()(1) & " honor" + vbTab
+            End If
+            If getOtherRewards()(2) > 0 Then
+                result = result & getOtherRewards()(2) & " arena points"
+            End If
+
         End If
 
         Return result

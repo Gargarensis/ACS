@@ -33,7 +33,7 @@ Public Class QuestForm
         Return result
     End Function
 
-    Private Sub drawQuest()
+    Public Sub drawQuest()
         Me.questDisplay.Image = CType(New Bitmap(questDisplay.Width, questDisplay.Height), Image)
         Using bmp As New Bitmap(questDisplay.Width, questDisplay.Height)
             Using g As Graphics = Graphics.FromImage(bmp)
@@ -42,21 +42,33 @@ Public Class QuestForm
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
                 g.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
-                g.DrawLine(Pens.Black, 0, 81, questDisplay.Width, 81)
-                g.DrawLine(Pens.Black, 0, 101, questDisplay.Width, 101)
-                g.DrawLine(Pens.Black, 0, 151, questDisplay.Width, 151)
-                g.DrawLine(Pens.Black, 0, 281, questDisplay.Width, 281)
+                g.DrawLine(Pens.Black, 0, POINT_QUEST_TITLE.Y, questDisplay.Width, POINT_QUEST_TITLE.Y)
+                g.DrawLine(Pens.Black, 0, POINT_QUEST_OBJ.Y, questDisplay.Width, POINT_QUEST_OBJ.Y)
+                g.DrawLine(Pens.Black, 0, POINT_QUEST_DESC_BOLD.Y, questDisplay.Width, POINT_QUEST_DESC_BOLD.Y)
+                g.DrawLine(Pens.Black, 0, POINT_QUEST_REWARDS_BOLD.Y, questDisplay.Width, POINT_QUEST_REWARDS_BOLD.Y)
 
-                g.DrawString(currentQuest.getQuestDetail(0), FONT_MORPHEUS, Brushes.Black, 20, 80)
-                g.DrawString(currentQuest.getQuestDetail(2), FONT_MONOSPACE, Brushes.Black, 25, 100)
-                g.DrawString("Description", FONT_MORPHEUS, Brushes.Black, 20, 150)
-                g.DrawString(currentQuest.getQuestDetail(1), FONT_MONOSPACE, Brushes.Black, 25, 170)
-                g.DrawString("Rewards", FONT_MORPHEUS, Brushes.Black, 20, 280)
+                g.DrawString(currentQuest.getQuestDetail(0), FONT_MORPHEUS, Brushes.Black, POINT_QUEST_TITLE)
+                g.DrawString(currentQuest.getQuestDetail(2), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_OBJ)
+                g.DrawString("Description", FONT_MORPHEUS, Brushes.Black, POINT_QUEST_DESC_BOLD)
+                g.DrawString(currentQuest.getQuestDetail(1), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_DESCRIPTION)
+                g.DrawString("Rewards", FONT_MORPHEUS, Brushes.Black, POINT_QUEST_REWARDS_BOLD)
                 drawQuestRewards(g)
 
                 questDisplay.Image = CType(bmp.Clone, Image)
             End Using
         End Using
+    End Sub
+
+    Public Sub drawQuestRewards(ByVal g As Graphics)
+        ' getting items icons
+        g.DrawString(currentQuest.getStringRewards(), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_REWARDS)
+
+        Dim url As String = Tables.getItemIconURL(Tables.getItemDisplayNameById(17))
+        Dim tClient As Net.WebClient = New Net.WebClient
+        Dim tImage As Bitmap = Bitmap.FromStream(New IO.MemoryStream(tClient.DownloadData(url)))
+
+        'PictureBox1.Image = Tables.ResizeIcon(tImage, ICON_REWARD_SIZE)
+
     End Sub
 
     Private Function stringToIntArray(ByVal start As String(), ByVal initialIndex As Int64) As Int64()
@@ -186,15 +198,5 @@ Public Class QuestForm
                 End If
             End If
         Next
-    End Sub
-    Public Sub drawQuestRewards(ByVal g As Graphics)
-        ' getting items icons
-        g.DrawString(currentQuest.getStringRewards(), FONT_MONOSPACE, Brushes.Black, 25, 302)
-
-        Dim url As String = Tables.getItemIconURL(Tables.getItemDisplayNameById(17))
-        Dim tClient As Net.WebClient = New Net.WebClient
-        Dim tImage As Bitmap = Bitmap.FromStream(New IO.MemoryStream(tClient.DownloadData(url)))
-
-
     End Sub
 End Class
