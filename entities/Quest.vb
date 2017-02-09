@@ -7,8 +7,9 @@ Public Class Quest
     Private classes As Int32
     Private startItem() As Int64
     Private itemRewards As Dictionary(Of Int64, Int32)
+    Private itemChoiceRewards As Dictionary(Of Int64, Int32)
     Private factionRewards As Dictionary(Of Int64, Int32)
-    Private otherRewards() As Int64 '0 money, 1 honor, 2 arena, 3 exp
+    Private otherRewards() As Int64 '0 money, 1 honor, 2 arena
     Private creatureReq As Dictionary(Of Int64, Int32)
     Private itemReq As Dictionary(Of Int64, Int32)
     Private factionReq As Dictionary(Of Int64, Int32)
@@ -39,6 +40,9 @@ Public Class Quest
     End Function
     Public Function getItemRewards() As Dictionary(Of Int64, Int32)
         Return itemRewards
+    End Function
+    Public Function getItemChoiceRewards() As Dictionary(Of Int64, Int32)
+        Return itemChoiceRewards
     End Function
     Public Function getFactionRewards() As Dictionary(Of Int64, Int32)
         Return factionRewards
@@ -84,6 +88,9 @@ Public Class Quest
     End Sub
     Public Sub setItemRewards(ByVal value As Dictionary(Of Int64, Int32))
         itemRewards = value
+    End Sub
+    Public Sub setItemChoiceRewards(ByVal value As Dictionary(Of Int64, Int32))
+        itemChoiceRewards = value
     End Sub
     Public Sub setFactionRewards(ByVal value As Dictionary(Of Int64, Int32))
         factionRewards = value

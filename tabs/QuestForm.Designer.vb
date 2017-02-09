@@ -24,8 +24,11 @@ Partial Class QuestForm
     Private Sub InitializeComponent()
         Me.lblTitleQuest = New System.Windows.Forms.Label
         Me.boxBasic = New System.Windows.Forms.GroupBox
+        Me.lblExperienceValue = New System.Windows.Forms.Label
         Me.numMaxLevel = New System.Windows.Forms.NumericUpDown
         Me.lblMaxLevel = New System.Windows.Forms.Label
+        Me.numExperience = New System.Windows.Forms.NumericUpDown
+        Me.lblExperience = New System.Windows.Forms.Label
         Me.numMinLevel = New System.Windows.Forms.NumericUpDown
         Me.lblMinLevel = New System.Windows.Forms.Label
         Me.numLevel = New System.Windows.Forms.NumericUpDown
@@ -49,9 +52,7 @@ Partial Class QuestForm
         Me.lblClasses = New System.Windows.Forms.Label
         Me.btnRacesClassMask = New System.Windows.Forms.Button
         Me.boxStartItem = New System.Windows.Forms.GroupBox
-        Me.lblExperienceValue = New System.Windows.Forms.Label
-        Me.numExperience = New System.Windows.Forms.NumericUpDown
-        Me.lblExperience = New System.Windows.Forms.Label
+        Me.lblProvidedName = New System.Windows.Forms.Label
         Me.lblProvidedItem = New System.Windows.Forms.Label
         Me.numProvidedCount = New System.Windows.Forms.NumericUpDown
         Me.lblStartItemCount = New System.Windows.Forms.Label
@@ -77,11 +78,12 @@ Partial Class QuestForm
         Me.txtObj2 = New System.Windows.Forms.TextBox
         Me.lblObjective4 = New System.Windows.Forms.Label
         Me.txtObj4 = New System.Windows.Forms.TextBox
-        Me.questDisplay = New System.Windows.Forms.PictureBox
         Me.boxRewards = New System.Windows.Forms.GroupBox
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.btnRewards = New System.Windows.Forms.Button
+        Me.questDisplay = New System.Windows.Forms.PictureBox
         Me.boxBasic.SuspendLayout()
         CType(Me.numMaxLevel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.numExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numMinLevel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numLevel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numZone, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,13 +93,12 @@ Partial Class QuestForm
         Me.boxFlags.SuspendLayout()
         Me.boxAllow.SuspendLayout()
         Me.boxStartItem.SuspendLayout()
-        CType(Me.numExperience, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numProvidedCount, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numProvidedId, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.boxRequirements.SuspendLayout()
         Me.boxQuestGiver.SuspendLayout()
-        CType(Me.questDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.boxRewards.SuspendLayout()
+        CType(Me.questDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTitleQuest
@@ -136,6 +137,16 @@ Partial Class QuestForm
         Me.boxBasic.TabStop = False
         Me.boxBasic.Text = "Basic"
         '
+        'lblExperienceValue
+        '
+        Me.lblExperienceValue.AutoSize = True
+        Me.lblExperienceValue.ForeColor = System.Drawing.Color.Green
+        Me.lblExperienceValue.Location = New System.Drawing.Point(113, 264)
+        Me.lblExperienceValue.Name = "lblExperienceValue"
+        Me.lblExperienceValue.Size = New System.Drawing.Size(113, 17)
+        Me.lblExperienceValue.TabIndex = 34
+        Me.lblExperienceValue.Text = "2200 experience"
+        '
         'numMaxLevel
         '
         Me.numMaxLevel.Location = New System.Drawing.Point(182, 216)
@@ -154,6 +165,24 @@ Partial Class QuestForm
         Me.lblMaxLevel.Size = New System.Drawing.Size(75, 17)
         Me.lblMaxLevel.TabIndex = 15
         Me.lblMaxLevel.Text = "Max Level:"
+        '
+        'numExperience
+        '
+        Me.numExperience.Location = New System.Drawing.Point(6, 262)
+        Me.numExperience.Maximum = New Decimal(New Integer() {9, 0, 0, 0})
+        Me.numExperience.Name = "numExperience"
+        Me.numExperience.Size = New System.Drawing.Size(100, 22)
+        Me.numExperience.TabIndex = 33
+        Me.numExperience.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lblExperience
+        '
+        Me.lblExperience.AutoSize = True
+        Me.lblExperience.Location = New System.Drawing.Point(3, 244)
+        Me.lblExperience.Name = "lblExperience"
+        Me.lblExperience.Size = New System.Drawing.Size(82, 17)
+        Me.lblExperience.TabIndex = 32
+        Me.lblExperience.Text = "Experience:"
         '
         'numMinLevel
         '
@@ -367,6 +396,7 @@ Partial Class QuestForm
         '
         'boxStartItem
         '
+        Me.boxStartItem.Controls.Add(Me.lblProvidedName)
         Me.boxStartItem.Controls.Add(Me.lblProvidedItem)
         Me.boxStartItem.Controls.Add(Me.numProvidedCount)
         Me.boxStartItem.Controls.Add(Me.lblStartItemCount)
@@ -374,51 +404,32 @@ Partial Class QuestForm
         Me.boxStartItem.Controls.Add(Me.lblItemStart)
         Me.boxStartItem.Location = New System.Drawing.Point(298, 44)
         Me.boxStartItem.Name = "boxStartItem"
-        Me.boxStartItem.Size = New System.Drawing.Size(270, 79)
+        Me.boxStartItem.Size = New System.Drawing.Size(198, 102)
         Me.boxStartItem.TabIndex = 24
         Me.boxStartItem.TabStop = False
         Me.boxStartItem.Text = "Start Item"
         '
-        'lblExperienceValue
+        'lblProvidedName
         '
-        Me.lblExperienceValue.AutoSize = True
-        Me.lblExperienceValue.ForeColor = System.Drawing.Color.Green
-        Me.lblExperienceValue.Location = New System.Drawing.Point(113, 264)
-        Me.lblExperienceValue.Name = "lblExperienceValue"
-        Me.lblExperienceValue.Size = New System.Drawing.Size(113, 17)
-        Me.lblExperienceValue.TabIndex = 34
-        Me.lblExperienceValue.Text = "2200 experience"
-        '
-        'numExperience
-        '
-        Me.numExperience.Location = New System.Drawing.Point(6, 262)
-        Me.numExperience.Maximum = New Decimal(New Integer() {9, 0, 0, 0})
-        Me.numExperience.Name = "numExperience"
-        Me.numExperience.Size = New System.Drawing.Size(100, 22)
-        Me.numExperience.TabIndex = 33
-        Me.numExperience.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'lblExperience
-        '
-        Me.lblExperience.AutoSize = True
-        Me.lblExperience.Location = New System.Drawing.Point(3, 244)
-        Me.lblExperience.Name = "lblExperience"
-        Me.lblExperience.Size = New System.Drawing.Size(82, 17)
-        Me.lblExperience.TabIndex = 32
-        Me.lblExperience.Text = "Experience:"
+        Me.lblProvidedName.AutoSize = True
+        Me.lblProvidedName.Location = New System.Drawing.Point(6, 64)
+        Me.lblProvidedName.Name = "lblProvidedName"
+        Me.lblProvidedName.Size = New System.Drawing.Size(0, 17)
+        Me.lblProvidedName.TabIndex = 22
         '
         'lblProvidedItem
         '
         Me.lblProvidedItem.AutoSize = True
-        Me.lblProvidedItem.Location = New System.Drawing.Point(164, 41)
+        Me.lblProvidedItem.Location = New System.Drawing.Point(185, 41)
         Me.lblProvidedItem.Name = "lblProvidedItem"
         Me.lblProvidedItem.Size = New System.Drawing.Size(0, 17)
         Me.lblProvidedItem.TabIndex = 21
         '
         'numProvidedCount
         '
-        Me.numProvidedCount.Location = New System.Drawing.Point(112, 39)
+        Me.numProvidedCount.Location = New System.Drawing.Point(133, 39)
         Me.numProvidedCount.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
+        Me.numProvidedCount.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numProvidedCount.Name = "numProvidedCount"
         Me.numProvidedCount.Size = New System.Drawing.Size(46, 22)
         Me.numProvidedCount.TabIndex = 20
@@ -427,7 +438,7 @@ Partial Class QuestForm
         'lblStartItemCount
         '
         Me.lblStartItemCount.AutoSize = True
-        Me.lblStartItemCount.Location = New System.Drawing.Point(109, 21)
+        Me.lblStartItemCount.Location = New System.Drawing.Point(130, 21)
         Me.lblStartItemCount.Name = "lblStartItemCount"
         Me.lblStartItemCount.Size = New System.Drawing.Size(49, 17)
         Me.lblStartItemCount.TabIndex = 19
@@ -643,6 +654,25 @@ Partial Class QuestForm
         Me.txtObj4.Size = New System.Drawing.Size(229, 22)
         Me.txtObj4.TabIndex = 32
         '
+        'boxRewards
+        '
+        Me.boxRewards.Controls.Add(Me.btnRewards)
+        Me.boxRewards.Location = New System.Drawing.Point(298, 150)
+        Me.boxRewards.Name = "boxRewards"
+        Me.boxRewards.Size = New System.Drawing.Size(198, 75)
+        Me.boxRewards.TabIndex = 33
+        Me.boxRewards.TabStop = False
+        Me.boxRewards.Text = "Rewards"
+        '
+        'btnRewards
+        '
+        Me.btnRewards.Location = New System.Drawing.Point(6, 21)
+        Me.btnRewards.Name = "btnRewards"
+        Me.btnRewards.Size = New System.Drawing.Size(179, 40)
+        Me.btnRewards.TabIndex = 0
+        Me.btnRewards.Text = "Rewards..."
+        Me.btnRewards.UseVisualStyleBackColor = True
+        '
         'questDisplay
         '
         Me.questDisplay.BackgroundImage = Global.ACS.My.Resources.Resources.Empty_Quest_Log
@@ -652,25 +682,6 @@ Partial Class QuestForm
         Me.questDisplay.Size = New System.Drawing.Size(374, 493)
         Me.questDisplay.TabIndex = 28
         Me.questDisplay.TabStop = False
-        '
-        'boxRewards
-        '
-        Me.boxRewards.Controls.Add(Me.Button1)
-        Me.boxRewards.Location = New System.Drawing.Point(298, 129)
-        Me.boxRewards.Name = "boxRewards"
-        Me.boxRewards.Size = New System.Drawing.Size(270, 128)
-        Me.boxRewards.TabIndex = 33
-        Me.boxRewards.TabStop = False
-        Me.boxRewards.Text = "Rewards"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(6, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(258, 40)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Rewards..."
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'QuestForm
         '
@@ -701,6 +712,7 @@ Partial Class QuestForm
         Me.boxBasic.ResumeLayout(False)
         Me.boxBasic.PerformLayout()
         CType(Me.numMaxLevel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.numExperience, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numMinLevel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numLevel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numZone, System.ComponentModel.ISupportInitialize).EndInit()
@@ -713,14 +725,13 @@ Partial Class QuestForm
         Me.boxAllow.PerformLayout()
         Me.boxStartItem.ResumeLayout(False)
         Me.boxStartItem.PerformLayout()
-        CType(Me.numExperience, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numProvidedCount, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numProvidedId, System.ComponentModel.ISupportInitialize).EndInit()
         Me.boxRequirements.ResumeLayout(False)
         Me.boxRequirements.PerformLayout()
         Me.boxQuestGiver.ResumeLayout(False)
-        CType(Me.questDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.boxRewards.ResumeLayout(False)
+        CType(Me.questDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -782,5 +793,6 @@ Partial Class QuestForm
     Friend WithEvents lblRaces As System.Windows.Forms.Label
     Friend WithEvents lblClasses As System.Windows.Forms.Label
     Friend WithEvents boxRewards As System.Windows.Forms.GroupBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnRewards As System.Windows.Forms.Button
+    Friend WithEvents lblProvidedName As System.Windows.Forms.Label
 End Class

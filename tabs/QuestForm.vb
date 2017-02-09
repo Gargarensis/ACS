@@ -11,10 +11,16 @@ Public Class QuestForm
     Private Sub initializeQuest()
         currentQuest = New Quest()
         currentQuest.setBasic(getBasicInfo())
+        currentQuest.setItemRewards(New Dictionary(Of Int64, Int32))
+        currentQuest.setItemChoiceRewards(New Dictionary(Of Int64, Int32))
+        currentQuest.setFactionRewards(New Dictionary(Of Int64, Int32))
+
+        Dim otherRewards(3) As Int64
+        currentQuest.setOtherRewards(otherRewards)
     End Sub
 
     Private Function getBasicInfo() As Int64()
-        Dim result(7) As Int64
+        Dim result(8) As Int64
         result(0) = Me.numId.Value
         result(1) = Me.numNextQuest.Value
         result(2) = Me.numPrevQuest.Value
@@ -22,6 +28,7 @@ Public Class QuestForm
         result(4) = Me.numLevel.Value
         result(5) = Me.numMinLevel.Value
         result(6) = Me.numMaxLevel.Value
+        result(7) = Me.numExperience.Value
 
         Return result
     End Function
@@ -81,7 +88,12 @@ Public Class QuestForm
     End Sub
 
     Private Sub lblItemStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblItemStart.Click
+        FormData.Show()
         FormData.setData(IO.File.ReadAllLines(ITEM_1_ENTRIES_PATH), DATA_TYPE.ITEMS1, numProvidedId)
+    End Sub
+
+    Private Sub numProvidedId_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numProvidedId.ValueChanged
+        modifyItem(sender, Me.lblProvidedName, IO.File.ReadAllLines(ITEM_1_ENTRIES_PATH))
     End Sub
 
     Private Sub questDisplay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles questDisplay.Click
@@ -98,7 +110,8 @@ Public Class QuestForm
 
             Case 151 To 281
                 MsgBox("Description")
-
+            Case Else
+                btnRewards.PerformClick()
 
 
         End Select
@@ -128,16 +141,25 @@ Public Class QuestForm
         lblRaces.Text = "Races mask: " & value
     End Sub
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRewards.Click
         QuestRewards.Show()
+        QuestRewards.setOwner(Me)
+        QuestRewards.setQuest(currentQuest)
     End Sub
 
     Public Sub receiveItemRewards(ByVal itemRewards As Dictionary(Of Int64, Int32))
         currentQuest.setItemRewards(itemRewards)
-        drawRewards()
     End Sub
-
-    Private Sub drawRewards()
-        'TODO
+    Public Sub receiveItemChoiceRewards(ByVal itemRewards As Dictionary(Of Int64, Int32))
+        currentQuest.setItemChoiceRewards(itemRewards)
+    End Sub
+    Public Sub receiveOtherRewards(ByVal otherRewards() As Int64)
+        currentQuest.setOtherRewards(otherRewards)
+    End Sub
+    Public Sub receiveFactionRewards(ByVal factionRewards As Dictionary(Of Int64, Int32))
+        currentQuest.setFactionRewards(factionRewards)
+    End Sub
+    Public Sub drawQuestRewards()
+        ' TODO
     End Sub
 End Class
