@@ -38,6 +38,10 @@ Public Class QuestForm
         Using bmp As New Bitmap(questDisplay.Width, questDisplay.Height)
             Using g As Graphics = Graphics.FromImage(bmp)
 
+                For Each v As Control In questDisplay.Controls
+                    questDisplay.Controls.Remove(v)
+                Next
+
                 g.SmoothingMode = Drawing2D.SmoothingMode.HighQuality
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
                 g.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
@@ -52,22 +56,103 @@ Public Class QuestForm
                 g.DrawString("Description", FONT_MORPHEUS, Brushes.Black, POINT_QUEST_DESC_BOLD)
                 g.DrawString(currentQuest.getQuestDetail(1), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_DESCRIPTION)
                 g.DrawString("Rewards", FONT_MORPHEUS, Brushes.Black, POINT_QUEST_REWARDS_BOLD)
-                drawQuestRewards(g)
+
+                g.DrawString(currentQuest.getStringRewards(), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_REWARDS)
+
+                Dim type As rewardType = rewardType.ITEM
+                If currentQuest.hasItemRewards() And Not currentQuest.hasItemChoiceRewards() Then
+                    type = rewardType.ITEM
+                End If
+                If Not currentQuest.hasItemRewards() And currentQuest.hasItemChoiceRewards() Then
+                    type = rewardType.CHOICE
+                End If
+                If currentQuest.hasItemRewards() And currentQuest.hasItemChoiceRewards() Then
+                    type = rewardType.BOTH
+                End If
+
+                For Each c As Control In questDisplay.Controls
+                    questDisplay.Controls.Remove(c)
+                Next
+                drawQuestRewards(type, START_POINT_REWARDS.X, START_POINT_REWARDS.Y)
 
                 questDisplay.Image = CType(bmp.Clone, Image)
             End Using
         End Using
     End Sub
 
-    Public Sub drawQuestRewards(ByVal g As Graphics)
-        ' getting items icons
-        g.DrawString(currentQuest.getStringRewards(), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_REWARDS)
+    Private Enum rewardType
+        ITEM
+        CHOICE
+        BOTH
+    End Enum
 
-        Dim url As String = Tables.getItemIconURL(Tables.getItemDisplayNameById(17))
-        Dim tClient As Net.WebClient = New Net.WebClient
-        Dim tImage As Bitmap = Bitmap.FromStream(New IO.MemoryStream(tClient.DownloadData(url)))
+    Private Sub drawQuestRewards(ByVal type As rewardType, ByVal startX As Integer, ByVal startY As Integer)
+        Dim l As List(Of Int64) = New List(Of Int64)
 
-        'PictureBox1.Image = Tables.ResizeIcon(tImage, ICON_REWARD_SIZE)
+        Dim x As Integer = startX
+        Dim y As Integer = startY
+
+        If type = rewardType.BOTH Then
+            drawQuestRewards(rewardType.ITEM, START_POINT_REWARDS.X, START_POINT_REWARDS.Y)
+
+            Dim countCheck As Integer = 0
+            Dim additionalHeight As Integer = 20
+            If currentQuest.getItemRewards.Keys.Count <= 2 Then
+                additionalHeight = 15
+            End If
+            For c As Integer = 0 To currentQuest.getItemRewards.Keys.Count - 1
+                If c Mod 2 = 0 Then
+                    countCheck = countCheck + 1
+                End If
+            Next
+            Dim calculateStart As Integer = START_POINT_REWARDS.Y + (countCheck * ICON_REWARD_SIZE.Height) + additionalHeight
+
+            drawQuestRewards(rewardType.CHOICE, START_POINT_REWARDS.X, calculateStart)
+            Exit Sub
+        End If
+
+        If type = rewardType.ITEM Then
+            l = New List(Of Int64)(currentQuest.getItemRewards().Keys)
+        End If
+
+        If type = rewardType.CHOICE Then
+            l = New List(Of Int64)(currentQuest.getItemChoiceRewards().Keys)
+        End If
+
+        Dim tImage As Bitmap
+        Dim i As Integer = 1
+
+        For Each k As Int64 In l
+            Try
+                Dim url As String = Tables.getItemIconURL(Tables.getItemDisplayNameById(k))
+                Dim tClient As Net.WebClient = New Net.WebClient
+                tImage = Bitmap.FromStream(New IO.MemoryStream(tClient.DownloadData(url)))
+            Catch
+                tImage = My.Resources.cross
+            End Try
+
+            Dim p As New PictureBox
+            p.Image = Tables.ResizeIcon(tImage, ICON_REWARD_SIZE)
+
+            If i Mod 2 = 1 Then
+                p.Location = New Point(x, y)
+                x = x + Tables.REWARDS_SPACE_LENGTH
+            Else
+                p.Location = New Point(x, y)
+                x = START_POINT_REWARDS.X
+                y = y + ICON_REWARD_SIZE.Width
+            End If
+
+            p.Name = "img" + type.ToString() + "Reward" & i
+            p.Tag = k
+            p.Visible = True
+            p.Width = ICON_REWARD_SIZE.Width
+            p.Height = ICON_REWARD_SIZE.Height
+            Me.questDisplay.Controls.Add(p)
+            p.BringToFront()
+
+            i = i + 1
+        Next
 
     End Sub
 
@@ -117,22 +202,24 @@ Public Class QuestForm
     Private Sub questDisplay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles questDisplay.Click
         Dim y As Int32 = DirectCast(e, MouseEventArgs).Y
 
-        Select Case y
-            Case 0 To 81
+        MsgBox(DirectCast(e, MouseEventArgs).X & " " & DirectCast(e, MouseEventArgs).Y)
 
-            Case 81 To 100
-                MsgBox("title")
+        'Select Case y
+        '    Case 0 To 81
 
-            Case 101 To 150
-                MsgBox("Obj")
+        '    Case 81 To 100
+        '        MsgBox("title")
 
-            Case 151 To 281
-                MsgBox("Description")
-            Case Else
-                btnRewards.PerformClick()
+        '    Case 101 To 150
+        '        MsgBox("Obj")
+
+        '    Case 151 To 281
+        '        MsgBox("Description")
+        '    Case Else
+        '        btnRewards.PerformClick()
 
 
-        End Select
+        'End Select
 
     End Sub
 

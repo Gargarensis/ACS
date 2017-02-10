@@ -78,12 +78,12 @@ Public Class Quest
         If getItemRewards().Count > 0 Then
             result = result + "You will get the following items: " + vbCrLf
             For Each k As Int64 In getItemRewards().Keys
-                result = result + "    " + Tables.findItemNameById(k)
+                result = result + "        " + addSpaceToText(Tables.findItemNameById(k), 125, FONT_MONOSPACE)
                 If i = 0 Then
-                    result = result + vbTab + vbTab
                     i = i + 1
                 Else
                     result = result + vbCrLf + vbCrLf
+
                     i = i - 1
                 End If
             Next
@@ -91,16 +91,16 @@ Public Class Quest
 
         i = 0
         If Not result.EndsWith(vbCrLf) Then
-            result = result + vbCrLf
+            result = result + vbCrLf + vbCrLf
         Else
             result.Remove(result.Length - 1, 1)
         End If
         If getItemChoiceRewards().Count > 0 Then
             result = result + "You will choose between one of the following items: " + vbCrLf
             For Each k As Int64 In getItemChoiceRewards().Keys
-                result = result + "    " + Tables.findItemNameById(k)
+                result = result + "        " + addSpaceToText(Tables.findItemNameById(k), 125, FONT_MONOSPACE)
                 If i = 0 Then
-                    result = result + vbTab + vbTab
+                    result = result
                     i = i + 1
                 Else
                     result = result + vbCrLf + vbCrLf
@@ -178,4 +178,11 @@ Public Class Quest
     End Sub
 
 
+    ' checks
+    Public Function hasItemRewards() As Boolean
+        Return getItemRewards().Keys.Count > 0
+    End Function
+    Public Function hasItemChoiceRewards() As Boolean
+        Return getItemChoiceRewards().Keys.Count > 0
+    End Function
 End Class

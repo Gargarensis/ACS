@@ -218,6 +218,7 @@
     <None Include="Resources\money-gold[2].gif" />
     <None Include="Resources\money-silver[1].gif" />
     <None Include="Resources\money-copper[1].gif" />
+    <None Include="Resources\cross.jpg" />
     <Content Include="tables\creature_template1.txt" />
     <Content Include="tables\creature_template_entries.txt" />
     <Content Include="tables\displayinterface.txt" />
