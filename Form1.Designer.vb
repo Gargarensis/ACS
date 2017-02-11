@@ -74,6 +74,9 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(983, 747)
         Me.Controls.Add(Me.TabControl1)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1001, 794)
+        Me.MinimumSize = New System.Drawing.Size(1001, 794)
         Me.Name = "Form1"
         Me.Text = "ACS"
         Me.TabControl1.ResumeLayout(False)

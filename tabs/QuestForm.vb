@@ -150,10 +150,35 @@ Public Class QuestForm
             p.Height = ICON_REWARD_SIZE.Height
             Me.questDisplay.Controls.Add(p)
             p.BringToFront()
+            AddHandler p.MouseUp, AddressOf handleItemRewardClick
 
             i = i + 1
         Next
 
+    End Sub
+
+
+    Private Sub handleItemRewardClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
+        If e.Button = MouseButtons.Right Then
+
+            Dim p As PictureBox = DirectCast(sender, PictureBox)
+
+            If p.Name.ToLower().Contains("item") Then
+                Dim temp As Dictionary(Of Int64, Int32) = currentQuest.getItemRewards()
+                temp.Remove(p.Tag)
+                currentQuest.setItemRewards(temp)
+                drawQuest()
+            End If
+
+            If DirectCast(sender, PictureBox).Name.ToLower().Contains("choice") Then
+                Dim temp As Dictionary(Of Int64, Int32) = currentQuest.getItemChoiceRewards()
+                temp.Remove(p.Tag)
+                currentQuest.setItemChoiceRewards(temp)
+                drawQuest()
+            End If
+
+
+        End If
     End Sub
 
     Private Function stringToIntArray(ByVal start As String(), ByVal initialIndex As Int64) As Int64()
@@ -202,24 +227,23 @@ Public Class QuestForm
     Private Sub questDisplay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles questDisplay.Click
         Dim y As Int32 = DirectCast(e, MouseEventArgs).Y
 
-        MsgBox(DirectCast(e, MouseEventArgs).X & " " & DirectCast(e, MouseEventArgs).Y)
+        Select Case y
+            Case 0 To Tables.POINT_QUEST_TITLE.Y
+                '
 
-        'Select Case y
-        '    Case 0 To 81
+            Case Tables.POINT_QUEST_TITLE.Y To Tables.POINT_QUEST_OBJ.Y
+                ' stuff wth title
+            Case Tables.POINT_QUEST_OBJ.Y To Tables.POINT_QUEST_DESC_BOLD.Y
+                ' stuff with objectives
 
-        '    Case 81 To 100
-        '        MsgBox("title")
+            Case Tables.POINT_QUEST_DESC_BOLD.Y To Tables.POINT_QUEST_REWARDS_BOLD.Y
+                ' stuff with description
 
-        '    Case 101 To 150
-        '        MsgBox("Obj")
-
-        '    Case 151 To 281
-        '        MsgBox("Description")
-        '    Case Else
-        '        btnRewards.PerformClick()
+            Case Else
+                btnRewards.PerformClick()
 
 
-        'End Select
+        End Select
 
     End Sub
 

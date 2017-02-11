@@ -71,14 +71,23 @@ Public Class Quest
     Public Function getMoneyReward() As Int64
         Return otherRewards(0)
     End Function
+    Public Function getCoinsReward() As Int64()
+        Dim result(3) As Int64
+        result(0) = Math.Floor(getMoneyReward() / 10000)
+        result(1) = Math.Floor(getMoneyReward() / 100) Mod 100
+        result(2) = getMoneyReward() Mod 100
+        Return result
+    End Function
     Public Function getStringRewards() As String
+        ' i should rewrite this better
         Dim result As String
-        result = "You will receive: " + vbCrLf
+        Dim coins As Int64() = getCoinsReward()
+        result = "You will receive: " & coins(0) & " gold, " & coins(1) & " silver, " & coins(2) & " copper." & vbCrLf
         Dim i As Integer = 0
         If getItemRewards().Count > 0 Then
             result = result + "You will get the following items: " + vbCrLf
             For Each k As Int64 In getItemRewards().Keys
-                result = result + "        " + addSpaceToText(Tables.findItemNameById(k), 125, FONT_MONOSPACE)
+                result = result + "        " + addSpaceToText("x" & getItemRewards()(k).ToString() & " " & Tables.findItemNameById(k), 125, FONT_MONOSPACE)
                 If i = 0 Then
                     i = i + 1
                 Else
@@ -98,7 +107,7 @@ Public Class Quest
         If getItemChoiceRewards().Count > 0 Then
             result = result + "You will choose between one of the following items: " + vbCrLf
             For Each k As Int64 In getItemChoiceRewards().Keys
-                result = result + "        " + addSpaceToText(Tables.findItemNameById(k), 125, FONT_MONOSPACE)
+                result = result + "        " + addSpaceToText("x" & getItemChoiceRewards()(k).ToString() & " " & Tables.findItemNameById(k), 125, FONT_MONOSPACE)
                 If i = 0 Then
                     result = result
                     i = i + 1
@@ -109,10 +118,16 @@ Public Class Quest
             Next
         End If
 
-        If Not result.EndsWith(vbCrLf) Then
-            result = result + vbCrLf
+        If not getItemChoiceRewards().Count >= 5 Then
+            If Not result.EndsWith(vbCrLf) Then
+                result = result + vbCrLf + vbCrLf
+            Else
+                result.Remove(result.Length - 1, 1)
+            End If
         Else
-            result.Remove(result.Length - 1, 1)
+            If Not result.EndsWith(vbCrLf) Then
+                result = result + vbCrLf + vbCrLf
+            End If
         End If
 
         If getOtherRewards()(1) > 0 Or getOtherRewards()(2) > 0 Then

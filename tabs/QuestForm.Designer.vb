@@ -127,9 +127,9 @@ Partial Class QuestForm
         Me.boxBasic.Controls.Add(Me.lblNextQuest)
         Me.boxBasic.Controls.Add(Me.numId)
         Me.boxBasic.Controls.Add(Me.lblId)
-        Me.boxBasic.Location = New System.Drawing.Point(12, 44)
+        Me.boxBasic.Location = New System.Drawing.Point(18, 44)
         Me.boxBasic.Name = "boxBasic"
-        Me.boxBasic.Size = New System.Drawing.Size(270, 290)
+        Me.boxBasic.Size = New System.Drawing.Size(270, 315)
         Me.boxBasic.TabIndex = 21
         Me.boxBasic.TabStop = False
         Me.boxBasic.Text = "Basic"
@@ -138,7 +138,7 @@ Partial Class QuestForm
         '
         Me.lblExperienceValue.AutoSize = True
         Me.lblExperienceValue.ForeColor = System.Drawing.Color.Green
-        Me.lblExperienceValue.Location = New System.Drawing.Point(113, 264)
+        Me.lblExperienceValue.Location = New System.Drawing.Point(116, 274)
         Me.lblExperienceValue.Name = "lblExperienceValue"
         Me.lblExperienceValue.Size = New System.Drawing.Size(113, 17)
         Me.lblExperienceValue.TabIndex = 34
@@ -146,7 +146,7 @@ Partial Class QuestForm
         '
         'numMaxLevel
         '
-        Me.numMaxLevel.Location = New System.Drawing.Point(182, 216)
+        Me.numMaxLevel.Location = New System.Drawing.Point(185, 226)
         Me.numMaxLevel.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.numMaxLevel.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMaxLevel.Name = "numMaxLevel"
@@ -157,7 +157,7 @@ Partial Class QuestForm
         'lblMaxLevel
         '
         Me.lblMaxLevel.AutoSize = True
-        Me.lblMaxLevel.Location = New System.Drawing.Point(179, 196)
+        Me.lblMaxLevel.Location = New System.Drawing.Point(182, 206)
         Me.lblMaxLevel.Name = "lblMaxLevel"
         Me.lblMaxLevel.Size = New System.Drawing.Size(75, 17)
         Me.lblMaxLevel.TabIndex = 15
@@ -165,7 +165,7 @@ Partial Class QuestForm
         '
         'numExperience
         '
-        Me.numExperience.Location = New System.Drawing.Point(6, 262)
+        Me.numExperience.Location = New System.Drawing.Point(9, 272)
         Me.numExperience.Maximum = New Decimal(New Integer() {9, 0, 0, 0})
         Me.numExperience.Name = "numExperience"
         Me.numExperience.Size = New System.Drawing.Size(100, 22)
@@ -175,7 +175,7 @@ Partial Class QuestForm
         'lblExperience
         '
         Me.lblExperience.AutoSize = True
-        Me.lblExperience.Location = New System.Drawing.Point(3, 244)
+        Me.lblExperience.Location = New System.Drawing.Point(6, 254)
         Me.lblExperience.Name = "lblExperience"
         Me.lblExperience.Size = New System.Drawing.Size(82, 17)
         Me.lblExperience.TabIndex = 32
@@ -183,7 +183,7 @@ Partial Class QuestForm
         '
         'numMinLevel
         '
-        Me.numMinLevel.Location = New System.Drawing.Point(100, 216)
+        Me.numMinLevel.Location = New System.Drawing.Point(103, 226)
         Me.numMinLevel.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.numMinLevel.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMinLevel.Name = "numMinLevel"
@@ -194,7 +194,7 @@ Partial Class QuestForm
         'lblMinLevel
         '
         Me.lblMinLevel.AutoSize = True
-        Me.lblMinLevel.Location = New System.Drawing.Point(97, 196)
+        Me.lblMinLevel.Location = New System.Drawing.Point(100, 206)
         Me.lblMinLevel.Name = "lblMinLevel"
         Me.lblMinLevel.Size = New System.Drawing.Size(72, 17)
         Me.lblMinLevel.TabIndex = 13
@@ -202,7 +202,7 @@ Partial Class QuestForm
         '
         'numLevel
         '
-        Me.numLevel.Location = New System.Drawing.Point(6, 214)
+        Me.numLevel.Location = New System.Drawing.Point(9, 224)
         Me.numLevel.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.numLevel.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numLevel.Name = "numLevel"
@@ -213,7 +213,7 @@ Partial Class QuestForm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 196)
+        Me.Label2.Location = New System.Drawing.Point(6, 206)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(88, 17)
         Me.Label2.TabIndex = 11
@@ -221,7 +221,7 @@ Partial Class QuestForm
         '
         'numZone
         '
-        Me.numZone.Location = New System.Drawing.Point(6, 171)
+        Me.numZone.Location = New System.Drawing.Point(9, 181)
         Me.numZone.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.numZone.Minimum = New Decimal(New Integer() {1000000, 0, 0, -2147483648})
         Me.numZone.Name = "numZone"
@@ -231,7 +231,7 @@ Partial Class QuestForm
         'lblZone
         '
         Me.lblZone.AutoSize = True
-        Me.lblZone.Location = New System.Drawing.Point(3, 153)
+        Me.lblZone.Location = New System.Drawing.Point(6, 163)
         Me.lblZone.Name = "lblZone"
         Me.lblZone.Size = New System.Drawing.Size(74, 17)
         Me.lblZone.TabIndex = 9
@@ -239,7 +239,7 @@ Partial Class QuestForm
         '
         'numPrevQuest
         '
-        Me.numPrevQuest.Location = New System.Drawing.Point(6, 124)
+        Me.numPrevQuest.Location = New System.Drawing.Point(9, 134)
         Me.numPrevQuest.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.numPrevQuest.Name = "numPrevQuest"
         Me.numPrevQuest.Size = New System.Drawing.Size(100, 22)
@@ -248,7 +248,7 @@ Partial Class QuestForm
         'lblPrevQuest
         '
         Me.lblPrevQuest.AutoSize = True
-        Me.lblPrevQuest.Location = New System.Drawing.Point(3, 106)
+        Me.lblPrevQuest.Location = New System.Drawing.Point(6, 116)
         Me.lblPrevQuest.Name = "lblPrevQuest"
         Me.lblPrevQuest.Size = New System.Drawing.Size(126, 17)
         Me.lblPrevQuest.TabIndex = 7
@@ -256,7 +256,7 @@ Partial Class QuestForm
         '
         'numNextQuest
         '
-        Me.numNextQuest.Location = New System.Drawing.Point(6, 80)
+        Me.numNextQuest.Location = New System.Drawing.Point(9, 90)
         Me.numNextQuest.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.numNextQuest.Name = "numNextQuest"
         Me.numNextQuest.Size = New System.Drawing.Size(100, 22)
@@ -265,7 +265,7 @@ Partial Class QuestForm
         'lblNextQuest
         '
         Me.lblNextQuest.AutoSize = True
-        Me.lblNextQuest.Location = New System.Drawing.Point(3, 62)
+        Me.lblNextQuest.Location = New System.Drawing.Point(6, 72)
         Me.lblNextQuest.Name = "lblNextQuest"
         Me.lblNextQuest.Size = New System.Drawing.Size(99, 17)
         Me.lblNextQuest.TabIndex = 5
@@ -273,7 +273,7 @@ Partial Class QuestForm
         '
         'numId
         '
-        Me.numId.Location = New System.Drawing.Point(6, 39)
+        Me.numId.Location = New System.Drawing.Point(9, 47)
         Me.numId.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.numId.Name = "numId"
         Me.numId.Size = New System.Drawing.Size(100, 22)
@@ -282,7 +282,7 @@ Partial Class QuestForm
         'lblId
         '
         Me.lblId.AutoSize = True
-        Me.lblId.Location = New System.Drawing.Point(3, 21)
+        Me.lblId.Location = New System.Drawing.Point(6, 29)
         Me.lblId.Name = "lblId"
         Me.lblId.Size = New System.Drawing.Size(25, 17)
         Me.lblId.TabIndex = 3
@@ -295,7 +295,7 @@ Partial Class QuestForm
         Me.boxFlags.Controls.Add(Me.chkWeekly)
         Me.boxFlags.Controls.Add(Me.chkRepeatable)
         Me.boxFlags.Controls.Add(Me.chkShare)
-        Me.boxFlags.Location = New System.Drawing.Point(12, 340)
+        Me.boxFlags.Location = New System.Drawing.Point(18, 365)
         Me.boxFlags.Name = "boxFlags"
         Me.boxFlags.Size = New System.Drawing.Size(270, 159)
         Me.boxFlags.TabIndex = 22
@@ -357,7 +357,7 @@ Partial Class QuestForm
         Me.boxAllow.Controls.Add(Me.lblRaces)
         Me.boxAllow.Controls.Add(Me.lblClasses)
         Me.boxAllow.Controls.Add(Me.btnRacesClassMask)
-        Me.boxAllow.Location = New System.Drawing.Point(12, 500)
+        Me.boxAllow.Location = New System.Drawing.Point(18, 528)
         Me.boxAllow.Name = "boxAllow"
         Me.boxAllow.Size = New System.Drawing.Size(270, 134)
         Me.boxAllow.TabIndex = 23
@@ -597,7 +597,7 @@ Partial Class QuestForm
         Me.boxRewards.Controls.Add(Me.btnRewards)
         Me.boxRewards.Location = New System.Drawing.Point(298, 150)
         Me.boxRewards.Name = "boxRewards"
-        Me.boxRewards.Size = New System.Drawing.Size(198, 194)
+        Me.boxRewards.Size = New System.Drawing.Size(198, 209)
         Me.boxRewards.TabIndex = 33
         Me.boxRewards.TabStop = False
         Me.boxRewards.Text = "Rewards"

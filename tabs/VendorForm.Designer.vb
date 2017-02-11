@@ -140,6 +140,7 @@ Partial Class VendorForm
         '
         'btnDeleteItem
         '
+        Me.btnDeleteItem.Enabled = False
         Me.btnDeleteItem.Location = New System.Drawing.Point(454, 21)
         Me.btnDeleteItem.Name = "btnDeleteItem"
         Me.btnDeleteItem.Size = New System.Drawing.Size(78, 32)

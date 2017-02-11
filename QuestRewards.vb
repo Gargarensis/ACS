@@ -99,7 +99,7 @@ Public Class QuestRewards
     End Sub
 
     Private Sub numGold_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numGold.ValueChanged
-        lblGold.Text = Math.Floor(numGold.Value / 10000) & " gold, " & Math.Floor(numGold.Value / 100) & " silver, " & numGold.Value Mod 10000 & " copper."
+        lblGold.Text = Math.Floor(numGold.Value / 10000) & " gold, " & Math.Floor(numGold.Value / 100) Mod 100 & " silver, " & numGold.Value Mod 100 & " copper."
     End Sub
 
 

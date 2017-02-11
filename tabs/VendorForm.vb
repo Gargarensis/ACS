@@ -2,20 +2,11 @@ Public Class VendorForm
     Dim oldModel As Integer = 0
 
     Private Sub browserModel_DocumentCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.WebBrowserDocumentCompletedEventArgs) Handles browserModel.DocumentCompleted
-        'WebBrowser1.Document.Body.InnerHtml = ""
-        'Me.WebBrowser1.ScriptErrorsSuppressed = True
-        'Dim code = New Object() {"ModelViewer.show({ type: 1, typeId: 35144, displayId: 29815 });"}
-
-        'WebBrowser1.Document.InvokeScript("eval", code)
-
-        'modelviewer-screen
-
         Dim links = browserModel.Document.Body.GetElementsByTagName("a")
 
         For Each d As HtmlElement In links
             If d.GetAttribute("className") = "dialog-x fa fa-times" Or d.GetAttribute("className") = "dialog-question fa fa-question" Then
                 d.Style = "Display:none"
-                MsgBox(d.InnerHtml)
             End If
         Next
 
@@ -150,6 +141,7 @@ Public Class VendorForm
         End If
 
         btnChange.Enabled = True
+        btnDeleteItem.Enabled = True
 
         Dim s As String() = listVendorItems.SelectedItem.ToString().Split(vbTab)
         numItemId.Value = DirectCast(listVendorItems.SelectedItem, VendorItem).getId()
@@ -168,6 +160,7 @@ Public Class VendorForm
         listVendorItems.Items.Remove(listVendorItems.SelectedItem)
         If listVendorItems.Items.Count = 0 Then
             btnChange.Enabled = False
+            btnDeleteItem.Enabled = False
         End If
     End Sub
 
