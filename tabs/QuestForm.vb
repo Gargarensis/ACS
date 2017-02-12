@@ -52,10 +52,10 @@ Public Class QuestForm
                 g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit
                 g.CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
-                g.DrawLine(Pens.Black, 0, POINT_QUEST_TITLE.Y, questDisplay.Width, POINT_QUEST_TITLE.Y)
-                g.DrawLine(Pens.Black, 0, POINT_QUEST_OBJ.Y, questDisplay.Width, POINT_QUEST_OBJ.Y)
-                g.DrawLine(Pens.Black, 0, POINT_QUEST_DESC_BOLD.Y, questDisplay.Width, POINT_QUEST_DESC_BOLD.Y)
-                g.DrawLine(Pens.Black, 0, POINT_QUEST_REWARDS_BOLD.Y, questDisplay.Width, POINT_QUEST_REWARDS_BOLD.Y)
+                'g.DrawLine(Pens.Black, 0, POINT_QUEST_TITLE.Y, questDisplay.Width, POINT_QUEST_TITLE.Y)
+                'g.DrawLine(Pens.Black, 0, POINT_QUEST_OBJ.Y, questDisplay.Width, POINT_QUEST_OBJ.Y)
+                'g.DrawLine(Pens.Black, 0, POINT_QUEST_DESC_BOLD.Y, questDisplay.Width, POINT_QUEST_DESC_BOLD.Y)
+                'g.DrawLine(Pens.Black, 0, POINT_QUEST_REWARDS_BOLD.Y, questDisplay.Width, POINT_QUEST_REWARDS_BOLD.Y)
 
                 g.DrawString(currentQuest.getQuestDetail(0), FONT_MORPHEUS, Brushes.Black, POINT_QUEST_TITLE)
                 g.DrawString(currentQuest.getQuestDetail(2), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_OBJ)
@@ -81,12 +81,42 @@ Public Class QuestForm
                 Next
                 drawQuestRewards(type, START_POINT_REWARDS.X, START_POINT_REWARDS.Y)
 
-                g.DrawString(currentQuest.getObjectivesText(), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_OBJ_COUNT)
+
+                g.DrawString(checkObjectivesLength(currentQuest.getObjectivesText(), 7), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_OBJ_COUNT)
 
                 questDisplay.Image = CType(bmp.Clone, Image)
             End Using
         End Using
     End Sub
+
+    Private Function checkObjectivesLength(ByVal s As String, ByVal length As Integer) As String
+        Dim result As String = ""
+
+        Dim temp As String() = s.Split(vbCrLf)
+
+        If temp.Length - 1 <= length Then
+            Return s
+        End If
+
+        For i As Integer = 0 To length - 1
+            result = result + temp(i)
+        Next
+
+        result = result + vbCrLf + "..."
+
+        For c As Integer = 1 To 5
+            CType(Me.boxRequirements.Controls("lblObj" & c.ToString()), Label).Text = ""
+            Me.boxRequirements.Controls.SetChildIndex(Me.boxRequirements.Controls("lblObj" & c.ToString()), c + 1)
+        Next
+
+        Dim j As Integer = 1
+        For i As Integer = length To temp.Length - 2
+            CType(Me.boxRequirements.Controls("lblObj" & j.ToString()), Label).Text = temp(i)
+            j = j + 1
+        Next
+
+        Return result
+    End Function
 
     Private Enum rewardType
         ITEM
@@ -344,5 +374,19 @@ Public Class QuestForm
         QuestRequirements.Show()
         QuestRequirements.setOwner(Me)
         QuestRequirements.setQuest(currentQuest)
+    End Sub
+
+    Private Sub lblObj5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblObj5.Click, lblObj4.Click, lblObj3.Click, lblObj2.Click, lblObj1.Click
+        MsgBox(CType(sender, Label).Size.Height.ToString())
+        CType(sender, Label).BringToFront()
+    End Sub
+
+    Private Sub lblZone_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblZone.Click
+        FormData.Show()
+        FormData.setData(IO.File.ReadAllLines(Tables.QUEST_SORTID_PATH), DATA_TYPE.SORTID, numZone)
+    End Sub
+
+    Private Sub numZone_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numZone.ValueChanged
+        modifyItem(sender, lblSortIdName, IO.File.ReadAllLines(Tables.QUEST_SORTID_PATH))
     End Sub
 End Class

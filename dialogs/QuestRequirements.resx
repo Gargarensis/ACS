@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label18.Text" xml:space="preserve">
+    <value>Reputation required to complete (not to take) the quest.
+Also, keep in mind that 0 value means 0/3000 Neutral.
+
+-42000 to -5999 : Hated
+-6000 to -2999 : Hostile
+-3000 to -1 : Unfriendly
+0 to 3000 : Neutral
+3001 to 9000 : Friendly
+9001 to 21000 : Honored
+21001 to 42000 : Revered
+42001 to 42999 : Exalted</value>
+  </data>
 </root>

@@ -22,8 +22,18 @@ Partial Class QuestRequirements
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(QuestRequirements))
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.tabCreature = New System.Windows.Forms.TabPage
+        Me.Label17 = New System.Windows.Forms.Label
+        Me.Label14 = New System.Windows.Forms.Label
+        Me.Label13 = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.txtObj1 = New System.Windows.Forms.TextBox
+        Me.txtObj2 = New System.Windows.Forms.TextBox
+        Me.txtObj3 = New System.Windows.Forms.TextBox
+        Me.txtObj4 = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
         Me.Label11 = New System.Windows.Forms.Label
@@ -76,6 +86,7 @@ Partial Class QuestRequirements
         Me.lblItemId1 = New System.Windows.Forms.Label
         Me.numItemId1 = New System.Windows.Forms.NumericUpDown
         Me.tabFactions = New System.Windows.Forms.TabPage
+        Me.Label18 = New System.Windows.Forms.Label
         Me.lblFactionName2 = New System.Windows.Forms.Label
         Me.lblFactionName1 = New System.Windows.Forms.Label
         Me.Label15 = New System.Windows.Forms.Label
@@ -88,15 +99,6 @@ Partial Class QuestRequirements
         Me.numFaction1 = New System.Windows.Forms.NumericUpDown
         Me.btnCancel = New System.Windows.Forms.Button
         Me.btnSave = New System.Windows.Forms.Button
-        Me.txtObj4 = New System.Windows.Forms.TextBox
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.txtObj3 = New System.Windows.Forms.TextBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.txtObj2 = New System.Windows.Forms.TextBox
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.txtObj1 = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.Label17 = New System.Windows.Forms.Label
         Me.TabControl1.SuspendLayout()
         Me.tabCreature.SuspendLayout()
         CType(Me.numCreatureCount4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,6 +178,79 @@ Partial Class QuestRequirements
         Me.tabCreature.TabIndex = 0
         Me.tabCreature.Text = "Creature"
         Me.tabCreature.UseVisualStyleBackColor = True
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(6, 210)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(325, 17)
+        Me.Label17.TabIndex = 57
+        Me.Label17.Text = "Here you can change the standard objective texts:"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 233)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(47, 17)
+        Me.Label14.TabIndex = 56
+        Me.Label14.Text = "Text1:"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(6, 261)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(47, 17)
+        Me.Label13.TabIndex = 56
+        Me.Label13.Text = "Text2:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(6, 289)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(47, 17)
+        Me.Label9.TabIndex = 56
+        Me.Label9.Text = "Text3:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 317)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(47, 17)
+        Me.Label6.TabIndex = 56
+        Me.Label6.Text = "Text4:"
+        '
+        'txtObj1
+        '
+        Me.txtObj1.Location = New System.Drawing.Point(63, 230)
+        Me.txtObj1.Name = "txtObj1"
+        Me.txtObj1.Size = New System.Drawing.Size(349, 22)
+        Me.txtObj1.TabIndex = 55
+        '
+        'txtObj2
+        '
+        Me.txtObj2.Location = New System.Drawing.Point(63, 258)
+        Me.txtObj2.Name = "txtObj2"
+        Me.txtObj2.Size = New System.Drawing.Size(349, 22)
+        Me.txtObj2.TabIndex = 55
+        '
+        'txtObj3
+        '
+        Me.txtObj3.Location = New System.Drawing.Point(63, 286)
+        Me.txtObj3.Name = "txtObj3"
+        Me.txtObj3.Size = New System.Drawing.Size(349, 22)
+        Me.txtObj3.TabIndex = 55
+        '
+        'txtObj4
+        '
+        Me.txtObj4.Location = New System.Drawing.Point(63, 314)
+        Me.txtObj4.Name = "txtObj4"
+        Me.txtObj4.Size = New System.Drawing.Size(349, 22)
+        Me.txtObj4.TabIndex = 55
         '
         'Label1
         '
@@ -699,6 +774,7 @@ Partial Class QuestRequirements
         '
         'tabFactions
         '
+        Me.tabFactions.Controls.Add(Me.Label18)
         Me.tabFactions.Controls.Add(Me.lblFactionName2)
         Me.tabFactions.Controls.Add(Me.lblFactionName1)
         Me.tabFactions.Controls.Add(Me.Label15)
@@ -715,6 +791,15 @@ Partial Class QuestRequirements
         Me.tabFactions.TabIndex = 2
         Me.tabFactions.Text = "Factions"
         Me.tabFactions.UseVisualStyleBackColor = True
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(4, 116)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(359, 187)
+        Me.Label18.TabIndex = 67
+        Me.Label18.Text = resources.GetString("Label18.Text")
         '
         'lblFactionName2
         '
@@ -759,7 +844,6 @@ Partial Class QuestRequirements
         Me.numFactionValue2.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue2.TabIndex = 61
         Me.numFactionValue2.Tag = "Value"
-        Me.numFactionValue2.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'numFactionValue1
         '
@@ -770,7 +854,6 @@ Partial Class QuestRequirements
         Me.numFactionValue1.Size = New System.Drawing.Size(65, 22)
         Me.numFactionValue1.TabIndex = 62
         Me.numFactionValue1.Tag = "Value"
-        Me.numFactionValue1.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'lblFactionID2
         '
@@ -829,79 +912,6 @@ Partial Class QuestRequirements
         Me.btnSave.TabIndex = 1
         Me.btnSave.Text = "Salva"
         Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'txtObj4
-        '
-        Me.txtObj4.Location = New System.Drawing.Point(63, 314)
-        Me.txtObj4.Name = "txtObj4"
-        Me.txtObj4.Size = New System.Drawing.Size(349, 22)
-        Me.txtObj4.TabIndex = 55
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 317)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(47, 17)
-        Me.Label6.TabIndex = 56
-        Me.Label6.Text = "Text4:"
-        '
-        'txtObj3
-        '
-        Me.txtObj3.Location = New System.Drawing.Point(63, 286)
-        Me.txtObj3.Name = "txtObj3"
-        Me.txtObj3.Size = New System.Drawing.Size(349, 22)
-        Me.txtObj3.TabIndex = 55
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(6, 289)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(47, 17)
-        Me.Label9.TabIndex = 56
-        Me.Label9.Text = "Text3:"
-        '
-        'txtObj2
-        '
-        Me.txtObj2.Location = New System.Drawing.Point(63, 258)
-        Me.txtObj2.Name = "txtObj2"
-        Me.txtObj2.Size = New System.Drawing.Size(349, 22)
-        Me.txtObj2.TabIndex = 55
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(6, 261)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(47, 17)
-        Me.Label13.TabIndex = 56
-        Me.Label13.Text = "Text2:"
-        '
-        'txtObj1
-        '
-        Me.txtObj1.Location = New System.Drawing.Point(63, 230)
-        Me.txtObj1.Name = "txtObj1"
-        Me.txtObj1.Size = New System.Drawing.Size(349, 22)
-        Me.txtObj1.TabIndex = 55
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 233)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(47, 17)
-        Me.Label14.TabIndex = 56
-        Me.Label14.Text = "Text1:"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(6, 210)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(325, 17)
-        Me.Label17.TabIndex = 57
-        Me.Label17.Text = "Here you can change the standard objective texts:"
         '
         'QuestRequirements
         '
@@ -1026,4 +1036,5 @@ Partial Class QuestRequirements
     Friend WithEvents txtObj2 As System.Windows.Forms.TextBox
     Friend WithEvents txtObj3 As System.Windows.Forms.TextBox
     Friend WithEvents txtObj4 As System.Windows.Forms.TextBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
 End Class

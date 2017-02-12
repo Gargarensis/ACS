@@ -119,7 +119,7 @@ Public Class Quest
             Next
         End If
 
-        If not getItemChoiceRewards().Count >= 5 Then
+        If Not getItemChoiceRewards().Count >= 5 Then
             If Not result.EndsWith(vbCrLf) Then
                 result = result + vbCrLf + vbCrLf
             Else
@@ -156,9 +156,9 @@ Public Class Quest
 
         For Each c As Int64 In creatureReq.Keys
             If Not objectivesOverride(i) = "" Then
-                result = result & objectivesOverride(i) & " slain 0/" & creatureReq(c) & vbCrLf
+                result = result & objectivesOverride(i) & " 0/" & creatureReq(c) & vbCrLf
             Else
-                result = result & Tables.findCreatureNameById(c) & " 0/" & creatureReq(c) & vbCrLf
+                result = result & Tables.findCreatureNameById(c) & " slain 0/" & creatureReq(c) & vbCrLf
             End If
             i = i + 1
         Next
@@ -170,7 +170,7 @@ Public Class Quest
 
 
         For Each f As Int64 In factionReq.Keys
-            result = result & Tables.getFactionNameById(f) & " 0/" & factionReq(f) & vbCrLf
+            result = result & "Reputation with " & Tables.getFactionNameById(f) & " " & factionReq(f) & vbCrLf
         Next
 
         Return result

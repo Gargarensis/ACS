@@ -52,13 +52,12 @@ Public Class FormData
                 updateExtendedCost()
             Case DATA_TYPE.CREATURE_NAME
                 updateTemplate1()
+            Case DATA_TYPE.SORTID
+                updateTemplate1()
 
         End Select
     End Sub
 
-    Sub updateCreatureName()
-
-    End Sub
 
     Sub updateExtendedCost()
         listContent.BeginUpdate()
@@ -128,9 +127,9 @@ Public Class FormData
     Sub updateGivenControl()
         Dim s As String() = listContent.Items(listContent.SelectedIndex).split(",")
         If TypeOf resultControl Is NumericUpDown Then
-            DirectCast(resultControl, NumericUpDown).Value = Convert.ToUInt64(s(0))
+            DirectCast(resultControl, NumericUpDown).Value = Convert.ToInt64(s(0))
         ElseIf TypeOf resultControl Is TextBox Then
-            DirectCast(resultControl, TextBox).Text = Convert.ToUInt64(s(0))
+            DirectCast(resultControl, TextBox).Text = Convert.ToInt64(s(0))
         End If
     End Sub
 
@@ -178,6 +177,11 @@ Public Class FormData
             updateGivenControl()
         End If
 
+        If currentType = DATA_TYPE.SORTID Then
+            updateGivenControl()
+        End If
+
         Me.Close()
     End Sub
+
 End Class

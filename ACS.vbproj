@@ -237,6 +237,7 @@
     <Content Include="tables\itemdisplay.txt" />
     <Content Include="tables\items.txt" />
     <Content Include="tables\questxp.txt" />
+    <Content Include="tables\sortid.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
