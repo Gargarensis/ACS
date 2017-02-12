@@ -393,7 +393,11 @@ Partial Class ClassRaceMask
         Me.Controls.Add(Me.Horde)
         Me.Controls.Add(Me.Orc)
         Me.Controls.Add(Me.Human)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.MaximumSize = New System.Drawing.Size(644, 508)
+        Me.MinimumSize = New System.Drawing.Size(644, 508)
         Me.Name = "ClassRaceMask"
+        Me.ShowInTaskbar = False
         Me.Text = "Pick Availability"
         CType(Me.Priest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Druid, System.ComponentModel.ISupportInitialize).EndInit()

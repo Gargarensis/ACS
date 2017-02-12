@@ -59,12 +59,7 @@ Partial Class QuestForm
         Me.numProvidedId = New System.Windows.Forms.NumericUpDown
         Me.lblItemStart = New System.Windows.Forms.Label
         Me.boxRequirements = New System.Windows.Forms.GroupBox
-        Me.lblFactionRequiredList = New System.Windows.Forms.Label
-        Me.btnFactionRequired = New System.Windows.Forms.Button
-        Me.lblCreatureKilledList = New System.Windows.Forms.Label
-        Me.btnCreatuerRequired = New System.Windows.Forms.Button
-        Me.lblItemrequiredList = New System.Windows.Forms.Label
-        Me.btnRequireItems = New System.Windows.Forms.Button
+        Me.btnRequirements = New System.Windows.Forms.Button
         Me.boxQuestGiver = New System.Windows.Forms.GroupBox
         Me.btnAddTaker = New System.Windows.Forms.Button
         Me.listTakers = New System.Windows.Forms.ListBox
@@ -129,7 +124,7 @@ Partial Class QuestForm
         Me.boxBasic.Controls.Add(Me.lblId)
         Me.boxBasic.Location = New System.Drawing.Point(18, 44)
         Me.boxBasic.Name = "boxBasic"
-        Me.boxBasic.Size = New System.Drawing.Size(270, 315)
+        Me.boxBasic.Size = New System.Drawing.Size(249, 354)
         Me.boxBasic.TabIndex = 21
         Me.boxBasic.TabStop = False
         Me.boxBasic.Text = "Basic"
@@ -138,7 +133,7 @@ Partial Class QuestForm
         '
         Me.lblExperienceValue.AutoSize = True
         Me.lblExperienceValue.ForeColor = System.Drawing.Color.Green
-        Me.lblExperienceValue.Location = New System.Drawing.Point(116, 274)
+        Me.lblExperienceValue.Location = New System.Drawing.Point(116, 319)
         Me.lblExperienceValue.Name = "lblExperienceValue"
         Me.lblExperienceValue.Size = New System.Drawing.Size(113, 17)
         Me.lblExperienceValue.TabIndex = 34
@@ -146,7 +141,7 @@ Partial Class QuestForm
         '
         'numMaxLevel
         '
-        Me.numMaxLevel.Location = New System.Drawing.Point(185, 226)
+        Me.numMaxLevel.Location = New System.Drawing.Point(100, 269)
         Me.numMaxLevel.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.numMaxLevel.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMaxLevel.Name = "numMaxLevel"
@@ -157,7 +152,7 @@ Partial Class QuestForm
         'lblMaxLevel
         '
         Me.lblMaxLevel.AutoSize = True
-        Me.lblMaxLevel.Location = New System.Drawing.Point(182, 206)
+        Me.lblMaxLevel.Location = New System.Drawing.Point(97, 249)
         Me.lblMaxLevel.Name = "lblMaxLevel"
         Me.lblMaxLevel.Size = New System.Drawing.Size(75, 17)
         Me.lblMaxLevel.TabIndex = 15
@@ -165,7 +160,7 @@ Partial Class QuestForm
         '
         'numExperience
         '
-        Me.numExperience.Location = New System.Drawing.Point(9, 272)
+        Me.numExperience.Location = New System.Drawing.Point(9, 317)
         Me.numExperience.Maximum = New Decimal(New Integer() {9, 0, 0, 0})
         Me.numExperience.Name = "numExperience"
         Me.numExperience.Size = New System.Drawing.Size(100, 22)
@@ -175,7 +170,7 @@ Partial Class QuestForm
         'lblExperience
         '
         Me.lblExperience.AutoSize = True
-        Me.lblExperience.Location = New System.Drawing.Point(6, 254)
+        Me.lblExperience.Location = New System.Drawing.Point(6, 299)
         Me.lblExperience.Name = "lblExperience"
         Me.lblExperience.Size = New System.Drawing.Size(82, 17)
         Me.lblExperience.TabIndex = 32
@@ -183,7 +178,7 @@ Partial Class QuestForm
         '
         'numMinLevel
         '
-        Me.numMinLevel.Location = New System.Drawing.Point(103, 226)
+        Me.numMinLevel.Location = New System.Drawing.Point(9, 269)
         Me.numMinLevel.Maximum = New Decimal(New Integer() {99, 0, 0, 0})
         Me.numMinLevel.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numMinLevel.Name = "numMinLevel"
@@ -194,7 +189,7 @@ Partial Class QuestForm
         'lblMinLevel
         '
         Me.lblMinLevel.AutoSize = True
-        Me.lblMinLevel.Location = New System.Drawing.Point(100, 206)
+        Me.lblMinLevel.Location = New System.Drawing.Point(6, 249)
         Me.lblMinLevel.Name = "lblMinLevel"
         Me.lblMinLevel.Size = New System.Drawing.Size(72, 17)
         Me.lblMinLevel.TabIndex = 13
@@ -295,9 +290,9 @@ Partial Class QuestForm
         Me.boxFlags.Controls.Add(Me.chkWeekly)
         Me.boxFlags.Controls.Add(Me.chkRepeatable)
         Me.boxFlags.Controls.Add(Me.chkShare)
-        Me.boxFlags.Location = New System.Drawing.Point(18, 365)
+        Me.boxFlags.Location = New System.Drawing.Point(18, 404)
         Me.boxFlags.Name = "boxFlags"
-        Me.boxFlags.Size = New System.Drawing.Size(270, 159)
+        Me.boxFlags.Size = New System.Drawing.Size(249, 159)
         Me.boxFlags.TabIndex = 22
         Me.boxFlags.TabStop = False
         Me.boxFlags.Text = "Flags"
@@ -357,9 +352,9 @@ Partial Class QuestForm
         Me.boxAllow.Controls.Add(Me.lblRaces)
         Me.boxAllow.Controls.Add(Me.lblClasses)
         Me.boxAllow.Controls.Add(Me.btnRacesClassMask)
-        Me.boxAllow.Location = New System.Drawing.Point(18, 528)
+        Me.boxAllow.Location = New System.Drawing.Point(18, 569)
         Me.boxAllow.Name = "boxAllow"
-        Me.boxAllow.Size = New System.Drawing.Size(270, 134)
+        Me.boxAllow.Size = New System.Drawing.Size(249, 119)
         Me.boxAllow.TabIndex = 23
         Me.boxAllow.TabStop = False
         Me.boxAllow.Text = "Allow to take quest"
@@ -386,7 +381,7 @@ Partial Class QuestForm
         '
         Me.btnRacesClassMask.Location = New System.Drawing.Point(17, 21)
         Me.btnRacesClassMask.Name = "btnRacesClassMask"
-        Me.btnRacesClassMask.Size = New System.Drawing.Size(237, 34)
+        Me.btnRacesClassMask.Size = New System.Drawing.Size(226, 34)
         Me.btnRacesClassMask.TabIndex = 33
         Me.btnRacesClassMask.Text = "Show choices..."
         Me.btnRacesClassMask.UseVisualStyleBackColor = True
@@ -399,9 +394,9 @@ Partial Class QuestForm
         Me.boxStartItem.Controls.Add(Me.lblStartItemCount)
         Me.boxStartItem.Controls.Add(Me.numProvidedId)
         Me.boxStartItem.Controls.Add(Me.lblItemStart)
-        Me.boxStartItem.Location = New System.Drawing.Point(298, 44)
+        Me.boxStartItem.Location = New System.Drawing.Point(273, 44)
         Me.boxStartItem.Name = "boxStartItem"
-        Me.boxStartItem.Size = New System.Drawing.Size(198, 102)
+        Me.boxStartItem.Size = New System.Drawing.Size(217, 102)
         Me.boxStartItem.TabIndex = 24
         Me.boxStartItem.TabStop = False
         Me.boxStartItem.Text = "Start Item"
@@ -424,7 +419,7 @@ Partial Class QuestForm
         '
         'numProvidedCount
         '
-        Me.numProvidedCount.Location = New System.Drawing.Point(133, 39)
+        Me.numProvidedCount.Location = New System.Drawing.Point(164, 39)
         Me.numProvidedCount.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.numProvidedCount.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.numProvidedCount.Name = "numProvidedCount"
@@ -435,7 +430,7 @@ Partial Class QuestForm
         'lblStartItemCount
         '
         Me.lblStartItemCount.AutoSize = True
-        Me.lblStartItemCount.Location = New System.Drawing.Point(130, 21)
+        Me.lblStartItemCount.Location = New System.Drawing.Point(161, 21)
         Me.lblStartItemCount.Name = "lblStartItemCount"
         Me.lblStartItemCount.Size = New System.Drawing.Size(49, 17)
         Me.lblStartItemCount.TabIndex = 19
@@ -462,81 +457,22 @@ Partial Class QuestForm
         '
         'boxRequirements
         '
-        Me.boxRequirements.Controls.Add(Me.lblFactionRequiredList)
-        Me.boxRequirements.Controls.Add(Me.btnFactionRequired)
-        Me.boxRequirements.Controls.Add(Me.lblCreatureKilledList)
-        Me.boxRequirements.Controls.Add(Me.btnCreatuerRequired)
-        Me.boxRequirements.Controls.Add(Me.lblItemrequiredList)
-        Me.boxRequirements.Controls.Add(Me.btnRequireItems)
-        Me.boxRequirements.Location = New System.Drawing.Point(298, 380)
+        Me.boxRequirements.Controls.Add(Me.btnRequirements)
+        Me.boxRequirements.Location = New System.Drawing.Point(273, 370)
         Me.boxRequirements.Name = "boxRequirements"
-        Me.boxRequirements.Size = New System.Drawing.Size(198, 157)
+        Me.boxRequirements.Size = New System.Drawing.Size(223, 157)
         Me.boxRequirements.TabIndex = 25
         Me.boxRequirements.TabStop = False
         Me.boxRequirements.Text = "Requirements to complete"
         '
-        'lblFactionRequiredList
+        'btnRequirements
         '
-        Me.lblFactionRequiredList.AutoSize = True
-        Me.lblFactionRequiredList.Cursor = System.Windows.Forms.Cursors.Help
-        Me.lblFactionRequiredList.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFactionRequiredList.ForeColor = System.Drawing.Color.Blue
-        Me.lblFactionRequiredList.Location = New System.Drawing.Point(164, 118)
-        Me.lblFactionRequiredList.Name = "lblFactionRequiredList"
-        Me.lblFactionRequiredList.Size = New System.Drawing.Size(34, 17)
-        Me.lblFactionRequiredList.TabIndex = 37
-        Me.lblFactionRequiredList.Text = "List"
-        '
-        'btnFactionRequired
-        '
-        Me.btnFactionRequired.Location = New System.Drawing.Point(6, 109)
-        Me.btnFactionRequired.Name = "btnFactionRequired"
-        Me.btnFactionRequired.Size = New System.Drawing.Size(152, 35)
-        Me.btnFactionRequired.TabIndex = 36
-        Me.btnFactionRequired.Text = "Faction Required..."
-        Me.btnFactionRequired.UseVisualStyleBackColor = True
-        '
-        'lblCreatureKilledList
-        '
-        Me.lblCreatureKilledList.AutoSize = True
-        Me.lblCreatureKilledList.Cursor = System.Windows.Forms.Cursors.Help
-        Me.lblCreatureKilledList.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCreatureKilledList.ForeColor = System.Drawing.Color.Blue
-        Me.lblCreatureKilledList.Location = New System.Drawing.Point(164, 77)
-        Me.lblCreatureKilledList.Name = "lblCreatureKilledList"
-        Me.lblCreatureKilledList.Size = New System.Drawing.Size(34, 17)
-        Me.lblCreatureKilledList.TabIndex = 35
-        Me.lblCreatureKilledList.Text = "List"
-        '
-        'btnCreatuerRequired
-        '
-        Me.btnCreatuerRequired.Location = New System.Drawing.Point(6, 68)
-        Me.btnCreatuerRequired.Name = "btnCreatuerRequired"
-        Me.btnCreatuerRequired.Size = New System.Drawing.Size(152, 35)
-        Me.btnCreatuerRequired.TabIndex = 34
-        Me.btnCreatuerRequired.Text = "Creature Killed..."
-        Me.btnCreatuerRequired.UseVisualStyleBackColor = True
-        '
-        'lblItemrequiredList
-        '
-        Me.lblItemrequiredList.AutoSize = True
-        Me.lblItemrequiredList.Cursor = System.Windows.Forms.Cursors.Help
-        Me.lblItemrequiredList.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemrequiredList.ForeColor = System.Drawing.Color.Blue
-        Me.lblItemrequiredList.Location = New System.Drawing.Point(164, 36)
-        Me.lblItemrequiredList.Name = "lblItemrequiredList"
-        Me.lblItemrequiredList.Size = New System.Drawing.Size(34, 17)
-        Me.lblItemrequiredList.TabIndex = 33
-        Me.lblItemrequiredList.Text = "List"
-        '
-        'btnRequireItems
-        '
-        Me.btnRequireItems.Location = New System.Drawing.Point(6, 27)
-        Me.btnRequireItems.Name = "btnRequireItems"
-        Me.btnRequireItems.Size = New System.Drawing.Size(152, 35)
-        Me.btnRequireItems.TabIndex = 32
-        Me.btnRequireItems.Text = "Item Required..."
-        Me.btnRequireItems.UseVisualStyleBackColor = True
+        Me.btnRequirements.Location = New System.Drawing.Point(6, 27)
+        Me.btnRequirements.Name = "btnRequirements"
+        Me.btnRequirements.Size = New System.Drawing.Size(211, 35)
+        Me.btnRequirements.TabIndex = 32
+        Me.btnRequirements.Text = "Requirements..."
+        Me.btnRequirements.UseVisualStyleBackColor = True
         '
         'boxQuestGiver
         '
@@ -595,9 +531,9 @@ Partial Class QuestForm
         Me.boxRewards.Controls.Add(Me.lblFac2)
         Me.boxRewards.Controls.Add(Me.lblFac1)
         Me.boxRewards.Controls.Add(Me.btnRewards)
-        Me.boxRewards.Location = New System.Drawing.Point(298, 150)
+        Me.boxRewards.Location = New System.Drawing.Point(273, 151)
         Me.boxRewards.Name = "boxRewards"
-        Me.boxRewards.Size = New System.Drawing.Size(198, 209)
+        Me.boxRewards.Size = New System.Drawing.Size(223, 209)
         Me.boxRewards.TabIndex = 33
         Me.boxRewards.TabStop = False
         Me.boxRewards.Text = "Rewards"
@@ -646,7 +582,7 @@ Partial Class QuestForm
         '
         Me.btnRewards.Location = New System.Drawing.Point(6, 21)
         Me.btnRewards.Name = "btnRewards"
-        Me.btnRewards.Size = New System.Drawing.Size(179, 40)
+        Me.btnRewards.Size = New System.Drawing.Size(211, 40)
         Me.btnRewards.TabIndex = 0
         Me.btnRewards.Text = "Rewards..."
         Me.btnRewards.UseVisualStyleBackColor = True
@@ -698,7 +634,6 @@ Partial Class QuestForm
         CType(Me.numProvidedCount, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numProvidedId, System.ComponentModel.ISupportInitialize).EndInit()
         Me.boxRequirements.ResumeLayout(False)
-        Me.boxRequirements.PerformLayout()
         Me.boxQuestGiver.ResumeLayout(False)
         Me.boxRewards.ResumeLayout(False)
         Me.boxRewards.PerformLayout()
@@ -737,12 +672,7 @@ Partial Class QuestForm
     Friend WithEvents numProvidedCount As System.Windows.Forms.NumericUpDown
     Friend WithEvents lblStartItemCount As System.Windows.Forms.Label
     Friend WithEvents boxRequirements As System.Windows.Forms.GroupBox
-    Friend WithEvents lblCreatureKilledList As System.Windows.Forms.Label
-    Friend WithEvents btnCreatuerRequired As System.Windows.Forms.Button
-    Friend WithEvents lblItemrequiredList As System.Windows.Forms.Label
-    Friend WithEvents btnRequireItems As System.Windows.Forms.Button
-    Friend WithEvents lblFactionRequiredList As System.Windows.Forms.Label
-    Friend WithEvents btnFactionRequired As System.Windows.Forms.Button
+    Friend WithEvents btnRequirements As System.Windows.Forms.Button
     Friend WithEvents boxQuestGiver As System.Windows.Forms.GroupBox
     Friend WithEvents btnAddTaker As System.Windows.Forms.Button
     Friend WithEvents listTakers As System.Windows.Forms.ListBox

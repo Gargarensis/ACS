@@ -65,22 +65,28 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Choices.Designer.vb">
+    <Compile Include="dialogs\Choices.Designer.vb">
       <DependentUpon>Choices.vb</DependentUpon>
     </Compile>
-    <Compile Include="Choices.vb">
+    <Compile Include="dialogs\Choices.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClassRaceMask.Designer.vb">
+    <Compile Include="dialogs\ClassRaceMask.Designer.vb">
       <DependentUpon>ClassRaceMask.vb</DependentUpon>
     </Compile>
-    <Compile Include="ClassRaceMask.vb">
+    <Compile Include="dialogs\ClassRaceMask.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Details.Designer.vb">
+    <Compile Include="dialogs\Details.Designer.vb">
       <DependentUpon>Details.vb</DependentUpon>
     </Compile>
-    <Compile Include="Details.vb">
+    <Compile Include="dialogs\Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogs\QuestRequirements.Designer.vb">
+      <DependentUpon>QuestRequirements.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\QuestRequirements.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="entities\Item.vb" />
@@ -93,10 +99,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormData.Designer.vb">
+    <Compile Include="dialogs\FormData.Designer.vb">
       <DependentUpon>FormData.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormData.vb">
+    <Compile Include="dialogs\FormData.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -114,10 +120,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="QuestRewards.Designer.vb">
+    <Compile Include="dialogs\QuestRewards.Designer.vb">
       <DependentUpon>QuestRewards.vb</DependentUpon>
     </Compile>
-    <Compile Include="QuestRewards.vb">
+    <Compile Include="dialogs\QuestRewards.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tables.vb" />
@@ -136,23 +142,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Choices.resx">
+    <EmbeddedResource Include="dialogs\Choices.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Choices.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClassRaceMask.resx">
+    <EmbeddedResource Include="dialogs\ClassRaceMask.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ClassRaceMask.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Details.resx">
+    <EmbeddedResource Include="dialogs\Details.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\QuestRequirements.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>QuestRequirements.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormData.resx">
+    <EmbeddedResource Include="dialogs\FormData.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormData.vb</DependentUpon>
     </EmbeddedResource>
@@ -162,7 +172,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuestRewards.resx">
+    <EmbeddedResource Include="dialogs\QuestRewards.resx">
       <SubType>Designer</SubType>
       <DependentUpon>QuestRewards.vb</DependentUpon>
     </EmbeddedResource>

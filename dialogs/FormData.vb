@@ -4,9 +4,21 @@ Public Class FormData
     Private currentType As Tables.DATA_TYPE
     Private resultControl As Control
 
+    Private excludedInstantPreviewTypes As DATA_TYPE() = {DATA_TYPE.TEMPLATE1, DATA_TYPE.ITEMS1, DATA_TYPE.CREATURE_NAME}
+
+    Private Function isInstantPreviewAllowed(ByVal type As DATA_TYPE) As Boolean
+        For Each d As DATA_TYPE In excludedInstantPreviewTypes
+            If d = type Then
+                Return False
+            End If
+        Next
+        Return True
+    End Function
+
+
     Public Sub setData(ByVal data As String(), ByVal type As Tables.DATA_TYPE, ByVal resultCtrl As Control)
         For Each s As String In data
-            If Not type = DATA_TYPE.TEMPLATE1 And Not type = DATA_TYPE.ITEMS1 Then
+            If isInstantPreviewAllowed(type) Then
                 listContent.Items.Add(s)
             End If
             origin = data
@@ -17,7 +29,7 @@ Public Class FormData
 
     Public Sub setData(ByVal data As String(), ByVal type As Tables.DATA_TYPE)
         For Each s As String In data
-            If Not type = DATA_TYPE.TEMPLATE1 And Not type = DATA_TYPE.ITEMS1 Then
+            If isInstantPreviewAllowed(type) Then
                 listContent.Items.Add(s)
             End If
             origin = data
@@ -38,7 +50,14 @@ Public Class FormData
                 updateTemplate1()
             Case DATA_TYPE.EXTCOST
                 updateExtendedCost()
+            Case DATA_TYPE.CREATURE_NAME
+                updateTemplate1()
+
         End Select
+    End Sub
+
+    Sub updateCreatureName()
+
     End Sub
 
     Sub updateExtendedCost()
@@ -154,5 +173,11 @@ Public Class FormData
         If currentType = DATA_TYPE.FACTIONS Then
             updateGivenControl()
         End If
+
+        If currentType = DATA_TYPE.CREATURE_NAME Then
+            updateGivenControl()
+        End If
+
+        Me.Close()
     End Sub
 End Class

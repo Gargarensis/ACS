@@ -14,6 +14,12 @@ Public Class QuestForm
         currentQuest.setItemRewards(New Dictionary(Of Int64, Int32))
         currentQuest.setItemChoiceRewards(New Dictionary(Of Int64, Int32))
         currentQuest.setFactionRewards(New Dictionary(Of Int64, Int32))
+        currentQuest.setCreatureReq(New Dictionary(Of Int64, Int32))
+        currentQuest.setItemReq(New Dictionary(Of Int64, Int32))
+        currentQuest.setFactionReq(New Dictionary(Of Int64, Int32))
+
+        Dim objs() As String = {"", "", "", ""}
+        currentQuest.setObjectivesOverride(objs)
 
         Dim otherRewards(3) As Int64
         currentQuest.setOtherRewards(otherRewards)
@@ -74,6 +80,8 @@ Public Class QuestForm
                     questDisplay.Controls.Remove(c)
                 Next
                 drawQuestRewards(type, START_POINT_REWARDS.X, START_POINT_REWARDS.Y)
+
+                g.DrawString(currentQuest.getObjectivesText(), FONT_MONOSPACE, Brushes.Black, POINT_QUEST_OBJ_COUNT)
 
                 questDisplay.Image = CType(bmp.Clone, Image)
             End Using
@@ -179,6 +187,14 @@ Public Class QuestForm
 
 
         End If
+
+        If e.Button = MouseButtons.Left Then
+            btnRewards.PerformClick()
+            If DirectCast(sender, PictureBox).Name.ToLower().Contains("choice") Then
+                QuestRewards.TabControl1.SelectedIndex = 1
+            End If
+        End If
+
     End Sub
 
     Private Function stringToIntArray(ByVal start As String(), ByVal initialIndex As Int64) As Int64()
@@ -285,6 +301,19 @@ Public Class QuestForm
     Public Sub receiveOtherRewards(ByVal otherRewards() As Int64)
         currentQuest.setOtherRewards(otherRewards)
     End Sub
+    Public Sub receiveItemReq(ByVal itemReq As Dictionary(Of Int64, Int32))
+        currentQuest.setItemReq(itemReq)
+    End Sub
+    Public Sub receiveCreatureReq(ByVal creatureReq As Dictionary(Of Int64, Int32))
+        currentQuest.setCreatureReq(creatureReq)
+    End Sub
+    Public Sub receiveFactionReq(ByVal factionReq As Dictionary(Of Int64, Int32))
+        currentQuest.setFactionReq(factionReq)
+    End Sub
+    Public Sub receiveObjOverride(ByVal obj As String())
+        currentQuest.setObjectivesOverride(obj)
+    End Sub
+
     Public Sub receiveFactionRewards(ByVal factionRewards As Dictionary(Of Int64, Int32))
         currentQuest.setFactionRewards(factionRewards)
 
@@ -309,5 +338,11 @@ Public Class QuestForm
                 End If
             End If
         Next
+    End Sub
+
+    Private Sub btnRequirements_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRequirements.Click
+        QuestRequirements.Show()
+        QuestRequirements.setOwner(Me)
+        QuestRequirements.setQuest(currentQuest)
     End Sub
 End Class

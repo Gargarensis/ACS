@@ -94,7 +94,7 @@ Public Class QuestRewards
         FormData.setData(IO.File.ReadAllLines(FACTION_ENTRIES_PATH), DATA_TYPE.FACTIONS, dItemLblNum(sender))
     End Sub
 
-    Private Sub numFaction1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numFaction5.ValueChanged, numFaction4.ValueChanged, numFaction3.ValueChanged, numFaction2.ValueChanged, numFaction1.ValueChanged
+    Private Sub numFaction_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numFaction5.ValueChanged, numFaction4.ValueChanged, numFaction3.ValueChanged, numFaction2.ValueChanged, numFaction1.ValueChanged
         modifyItem(sender, dItemNumLbl(sender), IO.File.ReadAllLines(FACTION_ENTRIES_PATH))
     End Sub
 

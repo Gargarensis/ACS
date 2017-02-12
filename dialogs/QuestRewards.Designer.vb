@@ -1110,11 +1110,15 @@ Partial Class QuestRewards
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(455, 436)
+        Me.ClientSize = New System.Drawing.Size(467, 434)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.TabControl1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.MaximumSize = New System.Drawing.Size(473, 463)
+        Me.MinimumSize = New System.Drawing.Size(473, 463)
         Me.Name = "QuestRewards"
+        Me.ShowInTaskbar = False
         Me.Text = "Quest Rewards"
         Me.TabControl1.ResumeLayout(False)
         Me.tabItem.ResumeLayout(False)

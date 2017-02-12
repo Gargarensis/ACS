@@ -15,7 +15,8 @@ Public Class Quest
     Private factionReq As Dictionary(Of Int64, Int32)
     Private questGivers() As Int64
     Private questTakers() As Int64
-    Private questDetails() As String = {"Title", "Quest Description", "Objective Description", "", "", "", "", "", "", "", "", ""}
+    Private questDetails() As String = {"Title", "Quest Description", "Objective Description", "", "", ""}
+    Private objectivesOverride() As String = {"", "", "", ""}
 
 
     Sub New()
@@ -51,7 +52,7 @@ Public Class Quest
         Return otherRewards
     End Function
     Public Function getCreatureReq() As Dictionary(Of Int64, Int32)
-        Return itemRewards
+        Return creatureReq
     End Function
     Public Function getItemReq() As Dictionary(Of Int64, Int32)
         Return itemReq
@@ -144,6 +145,38 @@ Public Class Quest
         Return result
     End Function
 
+    Public Function getObjectivesOverride() As String()
+        Return objectivesOverride
+    End Function
+
+    Public Function getObjectivesText() As String
+        Dim result As String = ""
+        Dim i As Integer = 0
+
+
+        For Each c As Int64 In creatureReq.Keys
+            If Not objectivesOverride(i) = "" Then
+                result = result & objectivesOverride(i) & " slain 0/" & creatureReq(c) & vbCrLf
+            Else
+                result = result & Tables.findCreatureNameById(c) & " 0/" & creatureReq(c) & vbCrLf
+            End If
+            i = i + 1
+        Next
+
+
+        For Each item As Int64 In itemReq.Keys
+            result = result & Tables.findItemNameById(item) & " 0/" & itemReq(item) & vbCrLf
+        Next
+
+
+        For Each f As Int64 In factionReq.Keys
+            result = result & Tables.getFactionNameById(f) & " 0/" & factionReq(f) & vbCrLf
+        Next
+
+        Return result
+    End Function
+
+
 
     'setter
     Public Sub setBasic(ByVal value As Int64())
@@ -174,7 +207,7 @@ Public Class Quest
         otherRewards = value
     End Sub
     Public Sub setCreatureReq(ByVal value As Dictionary(Of Int64, Int32))
-        itemRewards = value
+        creatureReq = value
     End Sub
     Public Sub setItemReq(ByVal value As Dictionary(Of Int64, Int32))
         itemReq = value
@@ -190,6 +223,10 @@ Public Class Quest
     End Sub
     Public Sub setQuestDetail(ByVal value As String())
         questDetails = value
+    End Sub
+
+    Public Sub setObjectivesOverride(ByVal value As String())
+        objectivesOverride = value
     End Sub
 
 
