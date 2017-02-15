@@ -23,7 +23,6 @@ Partial Class VendorForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Me.btnNpcData = New System.Windows.Forms.Button
         Me.boxItems = New System.Windows.Forms.GroupBox
         Me.numItemCost = New System.Windows.Forms.NumericUpDown
         Me.numItemId = New System.Windows.Forms.NumericUpDown
@@ -71,15 +70,6 @@ Partial Class VendorForm
         CType(Me.numModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numSize, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'btnNpcData
-        '
-        Me.btnNpcData.Location = New System.Drawing.Point(312, 151)
-        Me.btnNpcData.Name = "btnNpcData"
-        Me.btnNpcData.Size = New System.Drawing.Size(75, 74)
-        Me.btnNpcData.TabIndex = 23
-        Me.btnNpcData.Text = "Check existing npcs"
-        Me.btnNpcData.UseVisualStyleBackColor = True
         '
         'boxItems
         '
@@ -368,6 +358,8 @@ Partial Class VendorForm
         'lblModel
         '
         Me.lblModel.AutoSize = True
+        Me.lblModel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblModel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.lblModel.Location = New System.Drawing.Point(6, 75)
         Me.lblModel.Name = "lblModel"
         Me.lblModel.Size = New System.Drawing.Size(50, 17)
@@ -403,7 +395,7 @@ Partial Class VendorForm
         '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(11, 654)
+        Me.btnNew.Location = New System.Drawing.Point(535, 654)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(112, 35)
         Me.btnNew.TabIndex = 15
@@ -427,7 +419,6 @@ Partial Class VendorForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(960, 700)
-        Me.Controls.Add(Me.btnNpcData)
         Me.Controls.Add(Me.boxItems)
         Me.Controls.Add(Me.checkViewer)
         Me.Controls.Add(Me.browserModel)
@@ -459,7 +450,6 @@ Partial Class VendorForm
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnNpcData As System.Windows.Forms.Button
     Friend WithEvents boxItems As System.Windows.Forms.GroupBox
     Friend WithEvents numItemCost As System.Windows.Forms.NumericUpDown
     Friend WithEvents numItemId As System.Windows.Forms.NumericUpDown

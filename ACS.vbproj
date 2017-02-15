@@ -83,6 +83,12 @@
     <Compile Include="dialogs\Details.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="dialogs\QuestOthers.Designer.vb">
+      <DependentUpon>QuestOthers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dialogs\QuestOthers.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialogs\QuestRequirements.Designer.vb">
       <DependentUpon>QuestRequirements.vb</DependentUpon>
     </Compile>
@@ -153,6 +159,10 @@
     <EmbeddedResource Include="dialogs\Details.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogs\QuestOthers.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>QuestOthers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialogs\QuestRequirements.resx">
       <SubType>Designer</SubType>

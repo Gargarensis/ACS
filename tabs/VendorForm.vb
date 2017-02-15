@@ -125,7 +125,7 @@ Public Class VendorForm
         FormData.setData(IO.File.ReadAllLines(FACTION_ENTRIES_PATH), DATA_TYPE.FACTIONS, numFaction)
     End Sub
 
-    Private Sub btnNpcData_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNpcData.Click
+    Private Sub btnNpcData_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         FormData.Show()
         FormData.setData(IO.File.ReadAllLines(CREATURE_TEMPLATE_1_ENTRIES_PATH), DATA_TYPE.TEMPLATE1)
     End Sub
@@ -229,5 +229,10 @@ Public Class VendorForm
             i = i + 1
         Next
         Details.RichTextBox1.Text = s
+    End Sub
+
+    Private Sub lblModel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblModel.Click
+        FormData.Show()
+        FormData.setData(IO.File.ReadAllLines(CREATURE_TEMPLATE_1_ENTRIES_PATH), DATA_TYPE.CREATURE_MODELS, numModel)
     End Sub
 End Class
