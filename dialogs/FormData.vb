@@ -4,7 +4,8 @@ Public Class FormData
     Private currentType As Tables.DATA_TYPE
     Private resultControl As Control
 
-    Private excludedInstantPreviewTypes As DATA_TYPE() = {DATA_TYPE.TEMPLATE1, DATA_TYPE.ITEMS1, DATA_TYPE.CREATURE_NAME, DATA_TYPE.CREATURE_MODELS}
+    Private excludedInstantPreviewTypes As DATA_TYPE() = {DATA_TYPE.TEMPLATE1, DATA_TYPE.ITEMS1, DATA_TYPE.CREATURE_NAME,
+                                                          DATA_TYPE.CREATURE_MODELS, DATA_TYPE.SPELL}
 
     Private Function isInstantPreviewAllowed(ByVal type As DATA_TYPE) As Boolean
         For Each d As DATA_TYPE In excludedInstantPreviewTypes
@@ -56,6 +57,14 @@ Public Class FormData
                 updateTemplate1()
             Case DATA_TYPE.CREATURE_MODELS
                 updateCreatureModel()
+            Case DATA_TYPE.EMOTES
+                updateTemplate1()
+            Case DATA_TYPE.SPELL
+                updateTemplate1()
+            Case DATA_TYPE.EQUIP_MASK
+                updateTemplate1()
+            Case DATA_TYPE.CAST_FLAG
+                updateTemplate1()
 
 
         End Select
@@ -223,7 +232,26 @@ Public Class FormData
             updateGivenControl(2)
         End If
 
+        If currentType = DATA_TYPE.EMOTES Then
+            updateGivenControl()
+        End If
+
+        If currentType = DATA_TYPE.SPELL Then
+            updateGivenControl()
+        End If
+
+        If currentType = DATA_TYPE.EQUIP_MASK Then
+            updateGivenControl()
+        End If
+
+        If currentType = DATA_TYPE.CAST_FLAG Then
+            updateGivenControl()
+        End If
+
         Me.Close()
     End Sub
 
+    Private Sub FormData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

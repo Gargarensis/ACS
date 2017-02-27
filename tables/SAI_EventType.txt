@@ -1,0 +1,77 @@
+0,SMART_EVENT_UPDATE_IC,1,While in combat.
+1,SMART_EVENT_UPDATE_OOC,1,While out of combat.
+2,SMART_EVENT_HEALT_PCT,1,When the creature reaches a certain amount of health in %.
+3,SMART_EVENT_MANA_PCT,1,When the creature reaches a certain amount of mana in %.
+4,SMART_EVENT_AGGRO,1,When the creature enters combat.
+5,SMART_EVENT_KILL,1,When the creature kills something.
+6,SMART_EVENT_DEATH,1,When the creature dies.
+7,SMART_EVENT_EVADE,1,When the creature resets.
+8,SMART_EVENT_SPELLHIT,0,0
+9,SMART_EVENT_RANGE,1,On target in range.
+10,SMART_EVENT_OOC_LOS,1,When our target is in a range and out of combat.
+11,SMART_EVENT_RESPAWN,1,When the creature respawns.
+12,SMART_EVENT_TARGET_HEALTH_PCT,1,On health percentage of our target.
+13,SMART_EVENT_VICTIM_CASTING,1,While our target is casting a spell.
+14,SMART_EVENT_FRIENDLY_HEALTH,1,When a friendly unit in range is missing a value of heath.
+15,SMART_EVENT_FRIENDLY_IS_CC,1,When a friendly unit in range is cc.
+16,SMART_EVENT_FRIENDLY_MISSING_BUFF,1,When a friendly unit in rnge is missing an aura.
+17,SMART_EVENT_SUMMONED_UNIT,0,0
+18,SMART_EVENT_TARGET_MANA_PCT,1,On mana percentage of our target.
+19,SMART_EVENT_ACCEPTED_QUEST,1,When a player accepts a quest from us.
+20,SMART_EVENT_REWARD_QUEST,1,When we reward a player for a quest.
+21,SMART_EVENT_REACHED_HOME,0,0
+22,SMART_EVENT_RECEIVE_EMOTE,1,When we receive an emote.
+23,SMART_EVENT_HAS_AURA,1,When the creature as an aura.
+24,SMART_EVENT_TARGET_BUFFED,0,0
+25,SMART_EVENT_RESET,1,After Combat, On Respawn or Spawn
+26,SMART_EVENT_IC_LOS,1,When our target is in a range and in combat.
+27,SMART_EVENT_PASSENGER_BOARDED,0,0
+28,SMART_EVENT_PASSENGER_REMOVED,0,0
+29,SMART_EVENT_CHARMED,0,0
+30,SMART_EVENT_CHARMED_TARGET,0,0
+31,SMART_EVENT_SPELLHIT_TARGET,0,0
+32,SMART_EVENT_DAMAGED,1,When the creature gets damage for a certain amount.
+33,SMART_EVENT_DAMAGED_TARGET,1, When our target gets damaged for a certain amount.
+34,SMART_EVENT_MOVEMENTINFORM,0,0
+35,SMART_EVENT_SUMMON_DESPAWNED,0,0
+36,SMART_EVENT_CORPSE_REMOVED,0,0
+37,SMART_EVENT_AI_INIT,0,0
+38,SMART_EVENT_DATA_SET,0,0
+39,SMART_EVENT_WAYPOINT_START,1,When we start a waypoint movement.
+40,SMART_EVENT_WAYPOINT_REACHED,1,When we reach a waypoint.
+41,SMART_EVENT_TRANSPORT_ADDPLAYER(NYI),0,0
+42,SMART_EVENT_TRANSPORT_ADDCREATURE(NYI),0,0
+43,SMART_EVENT_TRANSPORT_REMOVE_PLAYER(NYI),0,0
+44,SMART_EVENT_TRANSPORT_RELOCATE(NYI),0,0
+45,SMART_EVENT_INSTANCE_PLAYER_ENTER(NYI),0,0
+46,SMART_EVENT_AREATRIGGER_ONTRIGGER,0,0
+47,SMART_EVENT_QUEST_ACCEPTED(NYI),0,0
+48,SMART_EVENT_QUEST_OBJ_COPLETETION(NYI),0,0
+49,SMART_EVENT_QUEST_COMPLETION(NYI),0,0
+50,SMART_EVENT_QUEST_REWARDED(NYI),0,0
+51,SMART_EVENT_QUEST_FAIL(NYI),0,0
+52,SMART_EVENT_TEXT_OVER,1,When the creature finishes saying a certiain line.
+53,SMART_EVENT_RECEIVE_HEAL,1,When the creature receives healing.
+54,SMART_EVENT_JUST_SUMMONED,1,When the creature gets summoned.
+55,SMART_EVENT_WAYPOINT_PAUSED,1,When the waypoint movement gets paused.
+56,SMART_EVENT_WAYPOINT_RESUMED,1,When the waypoint movement is resumed.
+57,SMART_EVENT_WAYPOINT_STOPPED,1,When the waypoint movement is stopped.
+58,SMART_EVENT_WAYPOINT_ENDED,1,When the waypoint movement finises.
+59,SMART_EVENT_TIMED_EVENT_TRIGGERED,0,0
+60,SMART_EVENT_UPDATE,1,Every x seconds.
+61,SMART_EVENT_LINK,1,After another action is completed.
+62,SMART_EVENT_GOSSIP_SELECT,1,When a gossip is selected.
+63,SMART_EVENT_JUST_CREATED,0,0
+64,SMART_EVENT_GOSSIP_HELLO,1,When we speak with the creature (On Right-Click creature that have gossip enabled.) 
+65,SMART_EVENT_FOLLOW_COMPLETED,1,When the follow ends.
+66,SMART_EVENT_DUMMY_EFFECT(NYI),0,0
+67,SMART_EVENT_IS_BEHIND_TARGET,1,When the creature is behind our target.
+68,SMART_EVENT_GAME_EVENT_START,0,0
+69,SMART_EVENT_GAME_EVENT_END,0,0
+70,SMART_EVENT_GO_STATE_CHANGED,0,0
+71,SMART_EVENT_GO_EVENT_INFORM,0,0
+72,SMART_EVENT_ACTION_DONE,0,0
+73,SMART_EVENT_ON_SPELLCLICK,0,0
+74,SMART_EVENT_FRIENDLY_HEALTH_PCT,1,When a friendly unit has some percentage of health.
+75,SMART_EVENT_DISTANCE_CREATURE,1,When a creature is in range.
+76,SMART_EVENT_DISTANCE_GAMEOBJECT,1,When a gameobject is in range.

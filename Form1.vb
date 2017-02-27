@@ -57,4 +57,20 @@ Public Class Form1
     Private Sub TabControl1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabControl1.SelectedIndexChanged
         activeTab = TabControl1.SelectedIndex
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FormAI.Show()
+    End Sub
+
+    Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs) 
+        Dim s As String() = IO.File.ReadAllLines("C:\Users\admin\Desktop\sound_entries.txt")
+
+        Dim result As String = ""
+
+        For Each l As String In s
+            Dim x As String() = l.Split(",")
+            result = result + x(0) + "," + x(1) + "," + x(2) + "," + x(3) + "," + x(23) + vbCrLf
+        Next
+        'RichTextBox1.Text = result.Replace(Chr(34), "")
+    End Sub
 End Class

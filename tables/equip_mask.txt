@@ -1,0 +1,8 @@
+0,Everything
+1,Main Hand
+2,Off Hand
+3,Main Hand and Off Hand
+4,Ranged weapon
+5,Main Hand and Ranged Weapon
+6,Off Hand and Ranged Weapon
+7,Everything

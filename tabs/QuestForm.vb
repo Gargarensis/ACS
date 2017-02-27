@@ -10,19 +10,6 @@ Public Class QuestForm
 
     Private Sub initializeQuest()
         currentQuest = New Quest()
-        currentQuest.setBasic(getBasicInfo())
-        currentQuest.setItemRewards(New Dictionary(Of Int64, Int32))
-        currentQuest.setItemChoiceRewards(New Dictionary(Of Int64, Int32))
-        currentQuest.setFactionRewards(New Dictionary(Of Int64, Int32))
-        currentQuest.setCreatureReq(New Dictionary(Of Int64, Int32))
-        currentQuest.setItemReq(New Dictionary(Of Int64, Int32))
-        currentQuest.setFactionReq(New Dictionary(Of Int64, Int32))
-
-        Dim objs() As String = {"", "", "", ""}
-        currentQuest.setObjectivesOverride(objs)
-
-        Dim otherRewards(3) As Int64
-        currentQuest.setOtherRewards(otherRewards)
     End Sub
 
     Private Function getBasicInfo() As Int64()
@@ -253,14 +240,6 @@ Public Class QuestForm
         drawQuest()
     End Sub
 
-    Private Sub chkRepeatable_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRepeatable.CheckedChanged
-        'also 1 in special flag
-    End Sub
-
-    Private Sub chkRaid_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkRaid.CheckedChanged
-        'also coso in type
-    End Sub
-
     Private Sub lblItemStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblItemStart.Click
         FormData.Show()
         FormData.setData(IO.File.ReadAllLines(ITEM_1_ENTRIES_PATH), DATA_TYPE.ITEMS1, numProvidedId)
@@ -273,17 +252,23 @@ Public Class QuestForm
     Private Sub questDisplay_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles questDisplay.Click
         Dim y As Int32 = DirectCast(e, MouseEventArgs).Y
 
+        For Each x As Control In questDisplay.Controls
+            If TypeOf x Is TextBox Or TypeOf x Is RichTextBox Then
+                questDisplay.Focus()
+            End If
+        Next
+
         Select Case y
-            Case 0 To Tables.POINT_QUEST_TITLE.Y
-                '
+            Case 0 To POINT_QUEST_TITLE.Y
+                ' nothing? (click above title)
 
-            Case Tables.POINT_QUEST_TITLE.Y To Tables.POINT_QUEST_OBJ.Y
-                ' stuff wth title
-            Case Tables.POINT_QUEST_OBJ.Y To Tables.POINT_QUEST_DESC_BOLD.Y
-                ' stuff with objectives
+            Case Tables.POINT_QUEST_TITLE.Y To POINT_QUEST_OBJ.Y
+                editTitle()
+            Case Tables.POINT_QUEST_OBJ.Y To POINT_QUEST_DESC_BOLD.Y
+                editObj()
 
-            Case Tables.POINT_QUEST_DESC_BOLD.Y To Tables.POINT_QUEST_REWARDS_BOLD.Y
-                ' stuff with description
+            Case Tables.POINT_QUEST_DESC_BOLD.Y To POINT_QUEST_REWARDS_BOLD.Y
+                editDescription()
 
             Case Else
                 btnRewards.PerformClick()
@@ -291,6 +276,82 @@ Public Class QuestForm
 
         End Select
 
+    End Sub
+
+    Private Sub editTitle()
+        Dim t As New TextBox
+        t.Name = "txtTitle"
+        t.Visible = True
+        t.Width = TEXTS_EDITORS_WIDTH
+        t.Height = TITLE_EDITOR_HEIGHT
+        t.Location = POINT_QUEST_TITLE
+        Me.questDisplay.Controls.Add(t)
+        t.BringToFront()
+        t.Text = currentQuest.getQuestDetail()(0)
+        t.Focus()
+
+        AddHandler t.Leave, AddressOf exitEditorAndSave
+        AddHandler t.KeyUp, AddressOf exitEditorWithKeyPress ' this also save
+
+    End Sub
+
+    Private Sub editDescription()
+        Dim t As New RichTextBox
+        Dim loc As New Point(POINT_QUEST_DESC_BOLD.X, POINT_QUEST_DESC_BOLD.Y + 20)
+
+        t.Name = "txtDescription"
+        t.Visible = True
+        t.Width = TEXTS_EDITORS_WIDTH
+        t.Height = POINT_QUEST_REWARDS_BOLD.Y - POINT_QUEST_DESC_BOLD.Y - 20
+        t.Location = loc
+        Me.questDisplay.Controls.Add(t)
+        t.BringToFront()
+        t.Text = currentQuest.getQuestDetail()(1)
+        t.Focus()
+
+        AddHandler t.Leave, AddressOf exitEditorAndSave
+        AddHandler t.KeyUp, AddressOf exitEditorWithKeyPress ' this also save
+
+    End Sub
+
+    Private Sub editObj()
+        Dim t As New RichTextBox
+        t.Name = "txtObjDesc"
+        t.Visible = True
+        t.Width = TEXTS_EDITORS_WIDTH
+        t.Height = POINT_QUEST_OBJ_COUNT.Y - POINT_QUEST_OBJ.Y - 5
+        t.Location = POINT_QUEST_OBJ
+        Me.questDisplay.Controls.Add(t)
+        t.BringToFront()
+        t.Text = currentQuest.getQuestDetail()(2)
+        t.Focus()
+
+        AddHandler t.Leave, AddressOf exitEditorAndSave
+        AddHandler t.KeyUp, AddressOf exitEditorWithKeyPress ' this also save
+
+    End Sub
+
+    Private Sub exitEditorAndSave(sender As Object, e As EventArgs)
+        Dim temp() As String = currentQuest.getQuestDetail()
+        If TypeOf sender Is TextBox Then
+            temp(0) = DirectCast(sender, TextBox).Text
+        ElseIf TypeOf sender Is RichTextBox Then
+            If DirectCast(sender, RichTextBox).Name = "txtObjDesc" Then
+                temp(2) = DirectCast(sender, RichTextBox).Text
+            Else
+                temp(1) = DirectCast(sender, RichTextBox).Text
+            End If
+        End If
+        Me.questDisplay.Controls.Remove(sender)
+        sender = Nothing
+        currentQuest.setQuestDetail(temp)
+        drawQuest()
+    End Sub
+
+    Private Sub exitEditorWithKeyPress(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+            exitEditorAndSave(sender, e)
+        End If
     End Sub
 
     Private Sub numExperience_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numExperience.ValueChanged, numLevel.ValueChanged
@@ -370,6 +431,31 @@ Public Class QuestForm
         Next
     End Sub
 
+    Public Sub receiveQuestGivers(ByVal givers As Int64())
+        currentQuest.setQuestGivers(givers)
+        listGivers.Items.Clear()
+        For Each x As Int64 In givers
+            If x <> 0 Then
+                listGivers.Items.Add(x)
+            End If
+        Next
+    End Sub
+
+    Public Sub receiveQuestTexts(ByVal texts As String())
+        currentQuest.setQuestDetail(texts)
+        drawQuest()
+    End Sub
+
+    Public Sub receiveQuestTakers(ByVal takers As Int64())
+        currentQuest.setQuestTakers(takers)
+        listTakers.Items.Clear()
+        For Each x As Int64 In takers
+            If x <> 0 Then
+                listTakers.Items.Add(x)
+            End If
+        Next
+    End Sub
+
     Private Sub btnRequirements_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRequirements.Click
         QuestRequirements.Show()
         QuestRequirements.setOwner(Me)
@@ -388,5 +474,130 @@ Public Class QuestForm
 
     Private Sub numZone_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles numZone.ValueChanged
         modifyItem(sender, lblSortIdName, IO.File.ReadAllLines(Tables.QUEST_SORTID_PATH))
+    End Sub
+
+    Private Sub btnAddGiver_Click(sender As Object, e As EventArgs) Handles btnAddGiver.Click
+        QuestGiverTaker.Show()
+        QuestGiverTaker.setOwner(Me)
+        QuestGiverTaker.setQuest(currentQuest)
+    End Sub
+
+    Private Sub btnAddTaker_Click(sender As Object, e As EventArgs) Handles btnAddTaker.Click
+        QuestGiverTaker.Show()
+        QuestGiverTaker.setOwner(Me)
+        QuestGiverTaker.setQuest(currentQuest)
+        QuestGiverTaker.TabControl1.SelectedIndex = 1
+    End Sub
+
+    Private Sub btnText_Click(sender As Object, e As EventArgs) Handles btnText.Click
+        QuestTexts.Show()
+        QuestTexts.setOwner(Me)
+        QuestTexts.setQuest(currentQuest)
+    End Sub
+
+    Public Sub changeFlag(ByVal value As Int64, ByVal sender As CheckBox)
+        If sender.Checked Then
+            currentQuest.setFlag(currentQuest.getFlag() And value)
+        Else
+            currentQuest.setFlag(currentQuest.getFlag() And Not value)
+        End If
+    End Sub
+
+    Private Sub chkShare_CheckedChanged(sender As Object, e As EventArgs) Handles chkShare.CheckedChanged
+        changeFlag(QUEST_SHARABLE_FLAG, sender)
+    End Sub
+
+    Private Sub chkRaid_CheckedChanged(sender As Object, e As EventArgs) Handles chkRaid.CheckedChanged
+        changeFlag(QUEST_RAID_FLAG, sender)
+        If chkRaid.Checked Then
+            currentQuest.setQuestType(41)
+        Else
+            currentQuest.setQuestType(0)
+        End If
+    End Sub
+
+    Private Sub chkRepeatable_CheckedChanged(sender As Object, e As EventArgs) Handles chkRepeatable.CheckedChanged
+        changeFlag(QUEST_REPEATABLE_FLAG, sender)
+        If chkRepeatable.Checked Then
+            currentQuest.setSpecialFlag(1)
+        Else
+            currentQuest.setSpecialFlag(0)
+        End If
+    End Sub
+
+    Private Sub chkDaily_CheckedChanged(sender As Object, e As EventArgs) Handles chkDaily.CheckedChanged
+        changeFlag(QUEST_DAILY_FLAG, sender)
+    End Sub
+
+    Private Sub chkWeekly_CheckedChanged(sender As Object, e As EventArgs) Handles chkWeekly.CheckedChanged
+        changeFlag(QUEST_WEEKLY_FLAG, sender)
+    End Sub
+
+
+    Private Sub btnSQL_Click(sender As Object, e As EventArgs) Handles btnSQL.Click
+        Details.Show()
+        Details.Size = VENDOR_QUERY_WINDOW_SIZE
+
+        Dim q As Quest = currentQuest
+
+        q.setBasic(Me.getBasicInfo())
+
+        Dim dfactionsReq As New Dictionary(Of Int64, Int32)(q.getFactionReq())
+        Dim dcreatureReq As New Dictionary(Of Int64, Int32)(q.getCreatureReq())
+        Dim ditemReq As New Dictionary(Of Int64, Int32)(q.getItemReq())
+        Dim dfactionsRew As New Dictionary(Of Int64, Int32)(q.getFactionRewards())
+        Dim ditemRew As New Dictionary(Of Int64, Int32)(q.getItemRewards())
+        Dim ditemchoiceRew As New Dictionary(Of Int64, Int32)(q.getItemChoiceRewards())
+
+        dfactionsReq.Add(0, 0)
+        dcreatureReq.Add(0, 0)
+        ditemReq.Add(0, 0)
+        dfactionsRew.Add(0, 0)
+        ditemRew.Add(0, 0)
+        ditemchoiceRew.Add(0, 0)
+
+        Dim factionsReq As New List(Of Int64)(q.getFactionReq().Keys)
+        Dim creatureReq As New List(Of Int64)(q.getCreatureReq().Keys)
+        Dim itemReq As New List(Of Int64)(q.getItemReq().Keys)
+        Dim factionsRew As New List(Of Int64)(q.getFactionRewards().Keys)
+        Dim itemRew As New List(Of Int64)(q.getItemRewards().Keys)
+        Dim itemchoiceRew As New List(Of Int64)(q.getItemChoiceRewards().Keys)
+
+        While factionsReq.Count < 6
+            factionsReq.Add(0)
+        End While
+        While creatureReq.Count < 6
+            creatureReq.Add(0)
+        End While
+        While itemReq.Count < 6
+            itemReq.Add(0)
+        End While
+        While factionsRew.Count < 6
+            factionsRew.Add(0)
+        End While
+        While itemRew.Count < 6
+            itemRew.Add(0)
+        End While
+        While itemchoiceRew.Count < 6
+            itemchoiceRew.Add(0)
+        End While
+
+        Dim s As String = String.Format(QUEST_QUERY, numId.Value, numLevel.Value, numMinLevel.Value, numMaxLevel.Value, numZone.Value, q.getQuestType(), q.getClasses(), q.getRaces(), factionsReq(0), factionsReq(1), dfactionsReq(factionsReq(0)), dfactionsReq(factionsReq(1)), numPrevQuest.Value, numNextQuest.Value, numExperience.Value, q.getOtherRewards()(0), q.getOtherRewards()(1), Me.numProvidedId.Value, Me.numProvidedCount.Value, q.getFlag(), q.getSpecialFlag(), q.getOtherRewards()(2), itemRew(0), itemRew(1), itemRew(2), itemRew(3), ditemRew(itemRew(0)), ditemRew(itemRew(1)), ditemRew(itemRew(2)), ditemRew(itemRew(3)),
+                                        itemchoiceRew(0), itemchoiceRew(1), itemchoiceRew(2), itemchoiceRew(3), itemchoiceRew(4), itemchoiceRew(5), ditemchoiceRew(itemchoiceRew(0)), ditemchoiceRew(itemchoiceRew(1)), ditemchoiceRew(itemchoiceRew(2)), ditemchoiceRew(itemchoiceRew(3)), ditemchoiceRew(itemchoiceRew(4)), ditemchoiceRew(itemchoiceRew(5)),
+                                        factionsRew(0), factionsRew(1), factionsRew(2), factionsRew(3), factionsRew(4), dfactionsRew(factionsRew(0)), dfactionsRew(factionsRew(1)), dfactionsRew(factionsRew(2)), dfactionsRew(factionsRew(3)), dfactionsRew(factionsRew(4)), q.getQuestDetail()(0), q.getQuestDetail()(2), q.getQuestDetail()(1), q.getQuestDetail()(4), q.getQuestDetail()(3), creatureReq(0), creatureReq(1), creatureReq(2), creatureReq(3), dcreatureReq(creatureReq(0)), dcreatureReq(creatureReq(1)), dcreatureReq(creatureReq(2)), dcreatureReq(creatureReq(3)),
+                                        itemReq(0), itemReq(1), itemReq(2), itemReq(3), itemReq(4), itemReq(5), ditemReq(itemReq(0)), ditemReq(itemReq(1)), ditemReq(itemReq(2)), ditemReq(itemReq(3)), ditemReq(itemReq(4)), ditemReq(itemReq(5)), q.getObjectivesOverride()(0), q.getObjectivesOverride()(1), q.getObjectivesOverride()(2), q.getObjectivesOverride()(3)) + ";" + vbCrLf
+        For Each starter As Int64 In q.getQuestGivers()
+            If starter = 0 Then
+                Continue For
+            End If
+            s = s + "-- Creature Starter: " + findCreatureNameById(starter) + vbCrLf + String.Format(QUEST_STARTER_QUERY, starter, q.getBasic()(0)) + vbCrLf
+        Next
+        For Each ender As Int64 In q.getQuestTakers()
+            If ender = 0 Then
+                Continue For
+            End If
+            s = s + "-- Creature Ender: " + findCreatureNameById(ender) + vbCrLf + String.Format(QUEST_ENDER_QUERY, ender, q.getBasic()(0)) + vbCrLf
+        Next
+        Details.RichTextBox1.Text = s
     End Sub
 End Class

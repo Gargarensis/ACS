@@ -3,6 +3,8 @@ Public Class Quest
     Private id As Int64
     Private basic() As Int64
     Private flag As Int32
+    Private specialFlag As Int32
+    Private questType As Int32
     Private races As Int32
     Private classes As Int32
     Private startItem() As Int64
@@ -20,7 +22,31 @@ Public Class Quest
 
 
     Sub New()
+        Dim emptyArray() As Int64 = {}
+        Dim startItem() As Int64 = {0L, 0L}
 
+        setBasic(QUEST_BASIC_STARTING_VALUES)
+        setFlag(0)
+        setSpecialFlag(0)
+        setQuestType(0)
+        setRaces(0)
+        setClasses(0)
+        setStartItem(startItem)
+        setItemRewards(New Dictionary(Of Int64, Int32))
+        setItemChoiceRewards(New Dictionary(Of Int64, Int32))
+        setFactionRewards(New Dictionary(Of Int64, Int32))
+        setCreatureReq(New Dictionary(Of Int64, Int32))
+        setItemReq(New Dictionary(Of Int64, Int32))
+        setFactionReq(New Dictionary(Of Int64, Int32))
+
+        setObjectivesOverride(QUEST_OBJS_STARTING_VALUES)
+
+
+        setQuestGivers(emptyArray)
+        setQuestTakers(emptyArray)
+
+        Dim otherRewards As Int64() = {0, 0, 0}
+        setOtherRewards(otherRewards)
     End Sub
 
     'getter
@@ -29,6 +55,12 @@ Public Class Quest
     End Function
     Public Function getFlag() As Int32
         Return flag
+    End Function
+    Public Function getSpecialFlag() As Int32
+        Return specialFlag
+    End Function
+    Public Function getQuestType() As Int32
+        Return questType
     End Function
     Public Function getRaces() As Int32
         Return races
@@ -68,6 +100,13 @@ Public Class Quest
     End Function
     Public Function getQuestDetail() As String()
         Return questDetails
+    End Function
+    Public Function getQuestDetailWithLBPlaceholder() As String()
+        Dim result(5) As String
+        For i As Integer = 0 To questDetails.Length - 1
+            result(i) = questDetails(i).Replace(vbCrLf, "$B$B")
+        Next
+        Return result
     End Function
     Public Function getMoneyReward() As Int64
         Return otherRewards(0)
@@ -184,6 +223,12 @@ Public Class Quest
     End Sub
     Public Sub setFlag(ByVal value As Int32)
         flag = value
+    End Sub
+    Public Sub setSpecialFlag(ByVal value As Int32)
+        specialFlag = value
+    End Sub
+    Public Sub setQuestType(ByVal value As Int32)
+        questType = value
     End Sub
     Public Sub setRaces(ByVal value As Int32)
         races = value

@@ -1,0 +1,16 @@
+0,Nothing
+1,Interrupt any other spell casting
+2,Triggered(this makes spell cost zero mana and have no cast time)
+3,The previous 2 combined
+32,Only casts the spell if the target does not have an aura from the spell
+33,1 and 32
+34,2 and 32
+35,3 and 32
+64,Prevent combat movement on cast, allow on fail range, mana, LOS
+65,1 and 64
+66,2 and 64
+67,3 and 64
+96,32 and 64
+97,1 and 32 and 64
+98,2 and 32 and 64
+99,Everything

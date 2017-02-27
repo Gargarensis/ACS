@@ -1,0 +1,120 @@
+1,SMART_ACTION_TALK,Makes the NPC say something.
+txt,Text to say.,0
+num,Time in ms to wait before the NPC will finish to talk.,0
+2,SMART_ACTION_SET_FACTION,Changes the NPC's faction.
+num,Faction ID.,FACTION
+3,SMART_ACTION_MORPH_TO_ENTRY_OR_MODEL,Changes the NPC's model. You can select only entry or model! If both are 0 this will demorph the creature.
+num,Creature entry,ENTRY
+num,Creature model,MODEL
+4,SMART_ACTION_SOUND,Plays a sound.
+num,Sound ID,SOUND
+bool,0 = only to self. 1 = to everyone,0
+5,SMART_ACTION_PLAY_EMOTE,Plays an emote.
+num,Emote id.,EMOTE
+9,SMART_ACTION_ACTIVATE_GOBJECT,Activates a gameobject. Target is the gameobject!
+10,SMART_ACTION_RANDOM_EMOTE,Plays a random emote chosen among six.
+num,Emote id 1.,EMOTE
+num,Emote id 2.,EMOTE
+num,Emote id 3.,EMOTE
+num,Emote id 4.,EMOTE
+num,Emote id 5.,EMOTE
+num,Emote id 6.,EMOTE
+11,SMART_ACTION_CAST,Cast a spell.
+num,Spell Id.,SPELL
+num,Spell flag.,SPELL_FLAG
+12,SMART_ACTION_SUMMON_CREATURE,Summon a creature.
+num,Creature entry.,ENTRY
+num,Summon type.,SUMMON_TYPE
+num,Duration (milliseconds).,0
+bool,1 = The creature will attack the invoker.,0
+17,SMART_ACTION_SET_EMOTE_STATE,Makes the NPC plays the same emote continuously.
+num,Emote id.,EMOTE
+18,SMART_ACTION_SET_UNIT_FLAG,Add a NPC's Unit Flag.
+num,Unit flag.,FLAG_1_OR_0
+bool,0 for unit_flags, 1 for unit_flags2,0
+19,SMART_ACTION_REMOVE_UNIT_FLAG,Remove a NPC's Unit Flag.
+num,Unit flag.,FLAG_1_OR_0
+bool,0 for unit_flags, 1 for unit_flags2,0
+20,SMART_ACTION_AUTO_ATTACK,The NPC will start or stop to auto attack the target.
+bool,0 = stop attack, 1 = start.,0
+21,SMART_ACTION_ALLOW_COMBAT_MOVEMENT,Allow or Disable Combat Movement.
+bool,0 = Stop combat based movement.,0
+25,SMART_ACTION_FLEE_FOR_ASSIST,The NPC will start to flee.
+bool,If you want the fleeing NPC to say attempts to flee text on flee, use 1.,0
+28,SMART_ACTION_REMOVEAURASFROMSPELL,Removes an aura from the target.
+num,Aura id. If 0 removes all auras,SPELL
+num,How many charges do you want to remove,0
+29,SMART_ACTION_FOLLOW,The NPC will follow the target.
+num,Distance (0 = Default value),0
+num,Angle (0 = Default value),0
+num,The creature when the follow will finish.,ENTRY
+num,The creature entry for a kill credit (to complete quests, no creature will be killed),ENTRY
+bool,credit type: 0 for creature and 1 for events,0
+33,SMART_ACTION_CALL_KILLEDMONSTER,Give a kill credit on a creature entry (nothing will be killed, but the player receives a kill for quests).
+num,Creature entry.,ENTRY
+37,SMART_ACTION_DIE,Kill the target.
+39,SMART_ACTION_CALL_FOR_HELP,The NPC will call other nearby creature for help!
+num,Radius in yards that other creatures must be to acknowledge the cry for help.,0
+bool,If you want the NPC to say '%s calls for help!' use 1.,0
+40,SMART_ACTION_SET_SHEATH,Show some weapons.
+num,Set which target's weapon will be displayed (0-unarmed, 1-melee, 2-ranged),0
+41,SMART_ACTION_FORCE_DESPAWN,Despawn the target.
+num,Time in ms.,0
+43,SMART_ACTION_MOUNT_TO_ENTRY_OR_MODEL,Mount to Creature Entry OR Mount to Creature Display (only ONE of the two) Or both = 0 for Unmount
+num,Creature entry.,ENTRY
+num,Creature model.,MODEL
+46,SMART_ACTION_MOVE_FORWARD,Move forward for some yards.
+num,Yards to move.,0
+47,SMART_ACTION_SET_VISIBILITY,The NPC will become invisibile or visible.
+bool,Makes creature Visible = 1 or Invisible = 0,0
+50,SMART_ACTION_SUMMON_GO,Summon a Game Object.
+num,GameObject entry.,GO_ENTRY
+num,Duration before despawn in ms.,0
+51,SMART_ACTION_KILL_UNIT,Kill another unit.
+53,SMART_ACTION_WP_START,Start a waypoint movement.
+bool,0 for walk or 1 for run,0
+num,Waypoint entry.,0
+bool,If 1 the npc will repeat the path once finished.,0
+num,Quest id to give a kill credit at the end of the path. Can be 0.,QUEST
+num,Despawn time after path in ms.,0
+num,Reactstate 0 = passive 1 = defensive 2 = aggressive,0
+54,SMART_ACTION_WP_PAUSE,Pause a waypoint movement.
+num,Time in ms.,0
+55,SMART_ACTION_WP_STOP,Stop a waypoint movement.
+num,Despawn time in ms.,0
+num,Quest id to give credit or fail.,QUEST
+bool,If 0 the quest will fail.,0
+59,SMART_ACTION_SET_RUN,Set if the creature can run or not.
+bool,0 = nope 1 = can run.,0
+62,SMART_ACTION_TELEPORT,Teleport the target somewhere. Use any target (except 'none') and use x y z o as the coordinates.
+num,Map id.,MAP
+66,SMART_ACTION_SET_ORIENTATION,'SELF' = original orientation. For 'POSITION' you need to set target_o : 0 = North West = 1.5 South = 3 East = 4.5
+68,SMART_ACTION_PLAYMOVIE,Plays a cinematic.
+num,Movie entry.,MOVIE
+71,SMART_ACTION_EQUIP,The NPC will equip a weapon.
+num,creature_equip_template entry. If left 0 use the next fields.,0
+num,Choose what to display.,EQUIP_MASK
+num,Main Hand item entry.,ITEM
+num,Off-Hand item entry.,ITEM
+num,Ranged item entry.,ITEM
+72,SMART_ACTION_CLOSE_GOSSIP,Close gossip window.
+75,SMART_ACTION_ADD_AURA,Add an aura.
+num,Spell id.,SPELL
+81,SMART_ACTION_SET_NPC_FLAG,Set the NPC flag.
+num,Set a npc_flag,NPC_FLAG
+82,SMART_ACTION_ADD_NPC_FLAG,Add a NPC flag.
+num,Add a single npc_flag,NPC_FLAG
+83,SMART_ACTION_REMOVE_NPC_FLAG,Remove a NPC flag.
+num,Remove a single npc_flag,NPC_FLAG
+84,SMART_ACTION_SIMPLE_TALK,Makes a player say something. Does not trigger TEXT_OVER.
+txt,Text to say.,0
+89,SMART_ACTION_RANDOM_MOVE,Creature moves to random position in given radius.
+num,Radius.,0
+94,SMART_ACTION_SET_DYNAMIC_FLAG,Set the NPC's dynamic flag.
+num,Set a NPC's dynamic_flag,DYNAMIC_FLAG
+95,SMART_ACTION_ADD_DYNAMIC_FLAG,Add a dynamic flag.
+num,Add a single NPC's dynamic_flag,DYNAMIC_FLAG
+96,SMART_ACTION_REMOVE_DYNAMIC_FLAG,Remove a dynamic flag.
+num,Remove a single NPC's dynamic_flag,DYNAMIC_FLAG
+103,SMART_ACTION_SET_ROOT,Enable or disable the NPC's movements.
+bool, 0 = unroot the target 1 = root the target,0

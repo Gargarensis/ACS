@@ -235,4 +235,39 @@ Public Class VendorForm
         FormData.Show()
         FormData.setData(IO.File.ReadAllLines(CREATURE_TEMPLATE_1_ENTRIES_PATH), DATA_TYPE.CREATURE_MODELS, numModel)
     End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim dialog As New SaveFileDialog
+
+        dialog.AddExtension = True
+        dialog.DefaultExt = ".sql"
+        dialog.FileName = Me.txtName.Text.Replace(" ", "_") & ".sql"
+        dialog.Filter = "SQL Files|*.sql"
+        dialog.Title = "Save your vendor."
+
+        If dialog.ShowDialog() = DialogResult.Cancel Then
+            Exit Sub
+        End If
+
+        Dim s, repFlag As String
+        If checkRepair.Checked Then
+            repFlag = 4225
+        Else
+            repFlag = 129
+        End If
+        s = String.Format(VENDOR_QUERY, numEntry.Value, numModel.Value, txtName.Text, txtSubname.Text, numFaction.Value, numSize.Value, repFlag)
+        Dim i As Integer = 0
+        For Each item As VendorItem In listVendorItems.Items
+            If i = listVendorItems.Items.Count - 1 Then
+                s = s + String.Format(VENDOR_QUERY_SINGLE, numEntry.Value, item.getId(), item.getExtCostId()) + ";"
+            Else
+                s = s + String.Format(VENDOR_QUERY_SINGLE, numEntry.Value, item.getId(), item.getExtCostId()) + "," + vbCrLf
+            End If
+            i = i + 1
+        Next
+
+        IO.File.WriteAllText(dialog.FileName, s)
+
+
+    End Sub
 End Class
