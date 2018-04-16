@@ -1,0 +1,149 @@
+0,SMART_EVENT_UPDATE_IC,Occurs while the creature is in combat.
+num,ms after the event will trigger initially.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+1,SMART_EVENT_UPDATE_OOC,Occurs while the creature is out of combat.
+num,ms after the event will trigger initially.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+2,SMART_EVENT_HEALT_PCT,Occurs while the creature's health % is in between the two values.
+num,min health % to trigger the event.,0
+num,max health % to trigger the event.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+3,SMART_EVENT_MANA_PCT,Occurs while the creature's mana % is in between the two values.
+num,min mana % to trigger the event.,0
+num,max mana % to trigger the event.,0
+num,ms after the check will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+4,SMART_EVENT_AGGRO,Occurs immediately after the creature enters combat.
+5,SMART_EVENT_KILL,Occurs when the creature kills something.
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+bool,Can target creatures and player (0) or player only (1)?,0
+num,If it can trigger on creature specify the entry of it.,ENTRY
+6,SMART_EVENT_DEATH,Occurs when the creature dies.
+7,SMART_EVENT_EVADE,Occurs when the creature resets.
+9,SMART_EVENT_RANGE,Occurs when our target is in the specified range.
+num,Min distance.,0
+num,Max distance.,0
+num,ms after the check will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+10,SMART_EVENT_OOC_LOS,When our target is in a range and the creature is out of combat.
+bool,Ignore hostile target?,0
+num,Max distance to the target.,0
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+11,SMART_EVENT_RESPAWN,When the creature respawns.
+12,SMART_EVENT_TARGET_HEALTH_PCT,Occurs while our target's health % is in between the two values.
+num,min health % to trigger the event.,0
+num,max health % to trigger the event.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+13,SMART_EVENT_VICTIM_CASTING,While our target is casting a spell.
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+num,Spell id. You can leave this at 0 for target any spell.,0
+14,SMART_EVENT_FRIENDLY_HEALTH,Occurs when a friendly unit in range is missing a value (NOT %) of health.
+num,Missing health (flat!),0
+num,Radius in which our friendly unit must be.,0
+num,ms after the check will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+15,SMART_EVENT_FRIENDLY_IS_CC,Occurs when a friendly unit in range is under a crowd control effect.
+num,Radius in which our friendly unit must be.,0
+num,ms after the check will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+16,SMART_EVENT_FRIENDLY_MISSING_BUFF,Occurs when a friendly unit in range is missing an aura.
+num,Spell Id,0
+num,Radius in which our friendly unit must be.,0
+num,ms after the check will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+18,SMART_EVENT_TARGET_MANA_PCT,Occurs while our target's mana % is in between the two values.
+num,min mana % to trigger the event.,0
+num,max mana % to trigger the event.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+19,SMART_EVENT_ACCEPTED_QUEST,When a player accepts a quest from us.
+num,Quest id.,QUEST
+20,SMART_EVENT_REWARD_QUEST,When we reward a player for a quest.
+num,Quest id.,QUEST
+22,SMART_EVENT_RECEIVE_EMOTE,When the creature receives an emote.
+num,Emote id.,EMOTE
+23,SMART_EVENT_HAS_AURA,When the creature as an aura.
+num,Spell id. If it is negative it triggers when a creature is MISSING an aura.,SPELL
+num,Number of stack of this spell to trigger the event.,0
+25,SMART_EVENT_RESET,After Combat, On Respawn or Spawn
+26,SMART_EVENT_IC_LOS,When our target is in a range while the creature is in combat.
+bool,Ignore hostile target?,0
+num,Max distance to the target.,0
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+32,SMART_EVENT_DAMAGED,When the creature gets damaged for a certain amount.
+num,Min damage to be taken to trigger,0
+num,Max damage.,0
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+33,SMART_EVENT_DAMAGED_TARGET, When our target gets damaged for a certain amount.
+num,Min damage to be taken to trigger,0
+num,Max damage.,0
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+39,SMART_EVENT_WAYPOINT_START,When we start a waypoint movement.
+num,Point id (0 any),0
+num,Path id (0 any),0
+40,SMART_EVENT_WAYPOINT_REACHED,When we reach a waypoint.
+num,Point id (0 any),0
+num,Path id (0 any),0
+52,SMART_EVENT_TEXT_OVER,When the creature finishes saying a certain line.
+num,Group id (creature_text),0
+num,Creature entry (0 any),ENTRY
+53,SMART_EVENT_RECEIVE_HEAL,When the creature gets healed for a certain amount.
+num,Min heal to be taken to trigger,0
+num,Max heal.,0
+num,min cooldown to this event.,0
+num,max cooldown to this event. (random between those if different from min),0
+54,SMART_EVENT_JUST_SUMMONED,When the creature gets summoned.
+55,SMART_EVENT_WAYPOINT_PAUSED,When the waypoint movement gets paused.
+num,Point id (0 any),0
+num,Path id (0 any),0
+56,SMART_EVENT_WAYPOINT_RESUMED,When the waypoint movement is resumed.
+num,Point id (0 any),0
+num,Path id (0 any),0
+57,SMART_EVENT_WAYPOINT_STOPPED,When the waypoint movement is stopped.
+num,Point id (0 any),0
+num,Path id (0 any),0
+58,SMART_EVENT_WAYPOINT_ENDED,When the waypoint movement finishes.
+num,Point id (0 any),0
+num,Path id (0 any),0
+60,SMART_EVENT_UPDATE,Repeat without particular checks seconds.
+num,ms after the event will trigger initially.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+61,SMART_EVENT_LINK,After another action is completed.
+num,Action id.,0
+62,SMART_EVENT_GOSSIP_SELECT,When a gossip is selected.
+num,Gossip menu id.,0
+num,Gossip item id.,0
+64,SMART_EVENT_GOSSIP_HELLO,When we speak with the creature (On Right-Click creature that have gossip enabled.) 
+65,SMART_EVENT_FOLLOW_COMPLETED,When a follow (see actions) ends.
+67,SMART_EVENT_IS_BEHIND_TARGET,When the creature is behind our target.
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+74,SMART_EVENT_FRIENDLY_HEALTH_PCT,When a friendly unit has some percentage of health.
+num,min health % to trigger the event.,0
+num,max health % to trigger the event.,0
+num,ms after the event will be repeated.,0
+num,it should be >= than the previous. It adds a random behaviour if different.,0
+75,SMART_EVENT_DISTANCE_CREATURE,When a creature is in range.
+num,Creature GUID (not necessary if you specify an entry).,0
+num,Creature Entry (not necessary if you specify a GUID).,ENTRY
+num,Distance.,0
+num,Timer to repeat in ms.,0
+76,SMART_EVENT_DISTANCE_GAMEOBJECT,When a gameobject is in range.
+num,Creature GUID (not necessary if you specify an entry).,0
+num,Creature Entry (not necessary if you specify a GUID).,GO_ENTRY
+num,Distance.,0
+num,Timer to repeat in ms.,0

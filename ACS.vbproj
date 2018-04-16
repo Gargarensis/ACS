@@ -296,10 +296,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="tables\creature_flag.txt" />
+    <Content Include="tables\creature_flag2.txt" />
+    <Content Include="tables\dynamic_flags.txt" />
     <Content Include="tables\equip_mask.txt" />
+    <Content Include="tables\NPC_flags.txt" />
+    <Content Include="tables\quest_entries.txt" />
+    <Content Include="tables\SAI_Event_Form_Data.txt" />
     <Content Include="tables\sound_entries.txt" />
     <Content Include="tables\spell.txt" />
     <Content Include="tables\spell_castflag.txt" />
+    <Content Include="tables\summon_types.txt" />
     <None Include="fonts\ARIALN.TTF" />
     <None Include="fonts\FRIZ.TTF" />
     <None Include="fonts\MORPHEUS.TTF" />

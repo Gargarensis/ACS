@@ -9,7 +9,7 @@
 
         Select Case data
             Case AI_TYPE.ACTION
-                'stuff
+                source = IO.File.ReadAllLines(SAI_EVENT_DATA)
 
             Case AI_TYPE.REACTION
                 source = IO.File.ReadAllLines(SAI_ACTION_DATA)
@@ -73,8 +73,8 @@
                 control = New TextBox
             Case = "num"
                 control = New NumericUpDown
-                DirectCast(control, NumericUpDown).Maximum = 100000
-                DirectCast(control, NumericUpDown).Minimum = -100000
+                DirectCast(control, NumericUpDown).Maximum = 2 ^ 32
+                DirectCast(control, NumericUpDown).Minimum = -2 ^ 32
 
             Case = "bool"
                 renderBool(number)
@@ -146,6 +146,16 @@
         Dim number As String = lbl.Name.Chars(lbl.Name.Length - 1)
         Dim receiver As NumericUpDown = CType(aiPanel.Controls("numParam" & number.ToString()), NumericUpDown)
 
+        Dim cZero As New RadioButton
+        cZero.Checked = True
+        Dim cOne As RadioButton
+
+        If aiPanel.Controls.ContainsKey("cZero") And aiPanel.Controls.ContainsKey("cOne") Then
+            cZero = CType(aiPanel.Controls("cZero"), RadioButton)
+            cOne = CType(aiPanel.Controls("cOne"), RadioButton)
+        End If
+
+
         Select Case lbl.Tag
             Case = "FACTION"
                 FormData.Show()
@@ -170,20 +180,36 @@
                 FormData.Show()
                 FormData.setData(IO.File.ReadAllLines(Tables.CAST_FLAG_ENTRIES_PATH), DATA_TYPE.CAST_FLAG, receiver)
             Case = "SUMMON_TYPE"
-                'todo
+                FormData.Show()
+                FormData.setData(IO.File.ReadAllLines(Tables.SUMMON_TYPES_PATH), DATA_TYPE.SUMMON_TYPES, receiver)
             Case = "FLAG_1_OR_0"
-                'todo
+                FormData.Show()
+                If cZero.Checked Then
+                    FormData.setData(IO.File.ReadAllLines(Tables.CREATURE_FLAG_PATH), DATA_TYPE.CREATURE_FLAGS, receiver)
+                Else
+                    FormData.setData(IO.File.ReadAllLines(Tables.CREATURE_FLAG_2_PATH), DATA_TYPE.CREATURE_FLAGS, receiver)
+                End If
+
             Case = "QUEST"
-                'todo
+                FormData.Show()
+                FormData.setData(IO.File.ReadAllLines(Tables.QUEST_ENTRIES_PATH), DATA_TYPE.QUEST_ENTRIES, receiver)
             Case = "NPC_FLAG"
-                'todo
+                FormData.Show()
+                FormData.setData(IO.File.ReadAllLines(Tables.NPC_FLAGS_PATH), DATA_TYPE.NPC_FLAGS, receiver)
             Case = "DYNAMIC_FLAG"
-                'todo
+                FormData.Show()
+                FormData.setData(IO.File.ReadAllLines(Tables.DYNAMIC_FLAG_PATH), DATA_TYPE.CREATURE_FLAGS, receiver)
             Case = "EQUIP_MASK"
                 FormData.Show()
                 FormData.setData(IO.File.ReadAllLines(Tables.EQUIP_MASK_ENTRIES_PATH), DATA_TYPE.EQUIP_MASK, receiver)
             Case = "MOVIE"
-                'todo
+                MsgBox("Not available right now :(")
+            Case = "WAYPOINTS"
+            Case = "CREATURE_TEXTS"
+            Case = "LINK"
+            Case = "GOSSIP_MENU"
+            Case = "GOSSIP_ITEM"
+            Case = "GO_ENTRY"
             Case Else
                 MsgBox("Unhandled link! " & lbl.Tag)
         End Select

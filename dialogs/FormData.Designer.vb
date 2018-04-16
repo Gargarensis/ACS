@@ -47,11 +47,12 @@ Partial Class FormData
         '
         'listContent
         '
+        Me.listContent.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.listContent.FormattingEnabled = True
-        Me.listContent.Location = New System.Drawing.Point(9, 26)
+        Me.listContent.Location = New System.Drawing.Point(0, 30)
         Me.listContent.Margin = New System.Windows.Forms.Padding(2)
         Me.listContent.Name = "listContent"
-        Me.listContent.Size = New System.Drawing.Size(296, 277)
+        Me.listContent.Size = New System.Drawing.Size(314, 277)
         Me.listContent.TabIndex = 3
         '
         'FormData

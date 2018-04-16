@@ -1,0 +1,8 @@
+1,After a specified time OR when the creature disappears.
+2,After a specified time OR when the creature dies.
+3,After a specified time.
+4,After a specified time after the creature is out of combat.
+5,Instantly after death.
+6,After a specified time after death.
+7,When the creature disappears.
+8,When UnSummon() (or Force Despawn action) is called.

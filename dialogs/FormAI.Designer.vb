@@ -22,6 +22,7 @@ Partial Class FormAI
     'Non modificarla mediante l'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.boxReaction = New System.Windows.Forms.GroupBox()
         Me.lblNameReaction = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -34,6 +35,7 @@ Partial Class FormAI
         Me.boxTarget = New System.Windows.Forms.GroupBox()
         Me.lblNameTarget = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.timerIds = New System.Windows.Forms.Timer(Me.components)
         Me.boxReaction.SuspendLayout()
         Me.boxAction.SuspendLayout()
         Me.boxTarget.SuspendLayout()
@@ -144,6 +146,10 @@ Partial Class FormAI
         Me.Panel3.Size = New System.Drawing.Size(578, 135)
         Me.Panel3.TabIndex = 2
         '
+        'timerIds
+        '
+        Me.timerIds.Interval = 1000
+        '
         'FormAI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -177,4 +183,5 @@ Partial Class FormAI
     Friend WithEvents lblNameReaction As Label
     Friend WithEvents lblNameAction As Label
     Friend WithEvents lblNameTarget As Label
+    Friend WithEvents timerIds As Timer
 End Class

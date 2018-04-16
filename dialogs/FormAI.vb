@@ -114,6 +114,9 @@
             send.SelectionStart = actual.Length
             send.SelectionLength = found.Length
         End If
+
+        timerIds.Enabled = True
+
     End Sub
 
     Public Sub forceComboboxSelection(item As Object)
@@ -131,6 +134,15 @@
     End Sub
 
     Private Sub comboReaction_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboReaction.SelectedIndexChanged
-        p1.changeTypeValue(Convert.ToInt64(comboReaction.Text.Split(",")(0)))
+        p1.changeTypeValue(DirectCast(comboReaction.SelectedItem, Reaction).id)
+    End Sub
+
+    Private Sub timerIds_Tick(sender As Object, e As EventArgs) Handles timerIds.Tick
+        For Each x As Reaction In comboReaction.Items
+            If x.id.ToString() = comboReaction.Text Then
+                comboReaction.SelectedItem = x
+            End If
+        Next
+        timerIds.Enabled = False
     End Sub
 End Class

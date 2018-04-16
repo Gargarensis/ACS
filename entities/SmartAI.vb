@@ -72,7 +72,7 @@ Public Structure Reaction
     Public description As String
 
     Public Overrides Function toString() As String
-        Return id & ", " & description
+        Return description & ", " & id
     End Function
 
 End Structure
@@ -83,7 +83,7 @@ Public Structure Action
     Public description As String
 
     Public Overrides Function toString() As String
-        Return id & ", " & description
+        Return description & ", " & id
     End Function
 
 End Structure
@@ -94,7 +94,7 @@ Public Structure Target
     Public description As String
 
     Public Overrides Function toString() As String
-        Return id & ", " & description
+        Return description & ", " & id
     End Function
 
 End Structure

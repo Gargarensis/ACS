@@ -65,6 +65,14 @@ Public Class FormData
                 updateTemplate1()
             Case DATA_TYPE.CAST_FLAG
                 updateTemplate1()
+            Case DATA_TYPE.SUMMON_TYPES
+                updateTemplate1()
+            Case DATA_TYPE.NPC_FLAGS
+                updateTemplate1()
+            Case DATA_TYPE.QUEST_ENTRIES
+                updateTemplate1()
+            Case DATA_TYPE.CREATURE_FLAGS
+                updateTemplate1()
 
 
         End Select
@@ -166,6 +174,15 @@ Public Class FormData
         End If
     End Sub
 
+    Sub updateGivenControlWithPowerOfTwo()
+        Dim s As String() = listContent.Items(listContent.SelectedIndex).split(",")
+        If TypeOf resultControl Is NumericUpDown Then
+            DirectCast(resultControl, NumericUpDown).Value = 2 ^ Convert.ToInt64(s(0))
+        ElseIf TypeOf resultControl Is TextBox Then
+            DirectCast(resultControl, TextBox).Text = 2 ^ Convert.ToInt64(s(0))
+        End If
+    End Sub
+
     Sub updateGivenControl(ByVal index As Integer)
         Dim s As String() = listContent.Items(listContent.SelectedIndex).split(",")
 
@@ -248,10 +265,22 @@ Public Class FormData
             updateGivenControl()
         End If
 
+        If currentType = DATA_TYPE.SUMMON_TYPES Then
+            updateGivenControl()
+        End If
+
+        If currentType = DATA_TYPE.NPC_FLAGS Then
+            updateGivenControlWithPowerOfTwo()
+        End If
+
+        If currentType = DATA_TYPE.QUEST_ENTRIES Then
+            updateGivenControl()
+        End If
+
+        If currentType = DATA_TYPE.CREATURE_FLAGS Then
+            updateGivenControlWithPowerOfTwo()
+        End If
+
         Me.Close()
-    End Sub
-
-    Private Sub FormData_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 End Class
